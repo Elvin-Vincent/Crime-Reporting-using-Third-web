@@ -1,0 +1,18 @@
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  background-color: rgb(143, 228, 135);
+  transition: width 0.3s ease;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+}
+
+.group:hover .underline {
+  width: 100%;
+}
+div::-webkit-scrollbar {
+  display: none;
+}
