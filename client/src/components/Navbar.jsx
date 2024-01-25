@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as ScrollLink } from "react-scroll";
+// import { Link as ScrollLink } from "react-scroll";
 
 export default function Navbar() {
   return (
@@ -28,8 +28,17 @@ export default function Navbar() {
               <div className="underline"></div>
             </a>
           </li>
-
           <li className="group relative">
+            <a
+              href="/aboutus"
+              className="text-lg font-medium text-white hover:text-red-500"
+            >
+              About Us
+              <div className="underline"></div>
+            </a>
+          </li>
+
+          {/* <li className="group relative">
             <ScrollLink
               to="content3"
               spy={true}
@@ -41,7 +50,7 @@ export default function Navbar() {
               About us
               <div className="underline"></div>
             </ScrollLink>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

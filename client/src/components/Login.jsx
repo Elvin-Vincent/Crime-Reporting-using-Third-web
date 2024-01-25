@@ -24,7 +24,7 @@ const Login = () => {
     <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen">
       <Navbar />
       <div className="flex items-center justify-center h-full">
-        <div className=" shadow-2xl rounded-lg p-8 border border-gray-100 w-full max-w-xl mt-32">
+        <div className="shadow-2xl rounded-lg p-8 border border-gray-100 bg-texture-subtle w-full max-w-xl mt-32">
           <h1 className="text-3xl font-bold mb-6 text-red-500 text-center uppercase">
             OfferLogin
           </h1>

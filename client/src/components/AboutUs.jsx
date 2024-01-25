@@ -1,23 +1,27 @@
-// AboutUs.js
-
 import React from "react";
+// import Navbar from "./Navbar";
 
 const AboutUs = () => {
   return (
     <div
-      className=" bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen"
+      className="bg-gradient-to-br from-stone-300 via-zinc-400 to-zinc-900 min-h-screen flex flex-col"
       id="content3"
     >
-      <div className="container mx-auto p-8">
-        <h1 className="text-4xl font-bold mb-4">About Us</h1>
-        <p className="text-gray-700 mb-8">
+      {/* <Navbar /> */}
+      <div className="container mx-auto p-4 md:p-8 flex-grow overflow-y-auto">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">
+          About Us
+        </h1>
+        <p className="text-gray-700 mb-4 md:mb-8">
           Welcome to the Illegal Drug Trafficking Reporting Project. We are a
           dedicated team committed to leveraging blockchain technology to combat
           illegal drug trafficking and contribute to building safer communities.
         </p>
 
-        <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
-        <p className="text-gray-700 mb-8">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4">
+          Our Mission
+        </h2>
+        <p className="text-gray-700 mb-4 md:mb-8">
           Our mission is to empower individuals and communities to report
           illegal drug trafficking activities securely and anonymously. By
           utilizing blockchain technology, we aim to create a transparent and
@@ -25,8 +29,10 @@ const AboutUs = () => {
           data and promoting accountability.
         </p>
 
-        <h2 className="text-2xl font-bold mb-4">How It Works</h2>
-        <p className="text-gray-700 mb-8">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4">
+          How It Works
+        </h2>
+        <p className="text-gray-700 mb-4 md:mb-8">
           Our platform provides a user-friendly interface for individuals to
           submit reports related to illegal drug trafficking. The blockchain
           ensures that once a report is submitted, it becomes part of an
@@ -35,27 +41,29 @@ const AboutUs = () => {
           also enhances the credibility of the reported incidents.
         </p>
 
-        <h2 className="text-2xl font-bold mb-4">Meet the Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className=" p-4 rounded-lg shadow-2xl">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 md:mb-4 uppercase">
+          Meet the Team
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 uppercase">
+          <div className="p-4 rounded-lg shadow-2xl">
             <img className="mb-4 rounded-full" />
             <h3 className="text-xl font-bold mb-2">Arjun M S</h3>
-            <p className="text-gray-700">Jec20cs029</p>
+            <p className="text-gray-700">Jyothi Engineering College</p>
           </div>
-          <div className=" p-4 rounded-lg shadow-2xl">
+          <div className="p-4 rounded-lg shadow-2xl">
             <img className="mb-4 rounded-full" />
             <h3 className="text-xl font-bold mb-2">Abhin murali</h3>
-            <p className="text-gray-700">Jec20cs003</p>
+            <p className="text-gray-700">Jyothi Engineering College</p>
           </div>
-          <div className=" p-4 rounded-lg shadow-2xl">
+          <div className="p-4 rounded-lg shadow-2xl">
             <img className="mb-4 rounded-full" />
             <h3 className="text-xl font-bold mb-2">Elvin vincent a</h3>
-            <p className="text-gray-900">Jec20cs047</p>
+            <p className="text-gray-900">Jyothi Engineering College</p>
           </div>
-          <div className=" p-4 rounded-lg shadow-2xl">
+          <div className="p-4 rounded-lg shadow-2xl">
             <img className="mb-4 rounded-full" />
             <h3 className="text-xl font-bold mb-2">joyel p r</h3>
-            <p className="text-gray-700">Jec20cs059</p>
+            <p className="text-gray-700">Jyothi Engineering College</p>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Error from "./components/Error";
 import Admin from "./components/Admin";
+import AboutUs from "./components/AboutUs";
 function App() {
   return (
     <ThirdwebProvider
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Error />} />
           <Route path="/Admin" element={<Admin />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </div>
     </ThirdwebProvider>
