@@ -11,7 +11,7 @@ const UserComplaint = () => {
         Safe Whistle
       </h1>
       <div className="flex items-center justify-center h-full">
-        <div className="border-2 border-neutral-100 p-6 rounded-lg shadow-2xl w-full max-w-md mt-32 bg-white dark:bg-transparent">
+        <div className="border-2 border-neutral-100 p-6 rounded-lg shadow-2xl w-full max-w-md mt-24 bg-white dark:bg-transparent bg-opacity-70 backdrop-filter backdrop-blur-md">
           <form>
             <div className="mb-6">
               <h1 className="text-2xl font-bold mb-4 text-center text-red-800 uppercase">

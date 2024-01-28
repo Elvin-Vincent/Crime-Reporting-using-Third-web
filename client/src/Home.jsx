@@ -4,7 +4,7 @@ import { ConnectWallet, useConnectionStatus } from "@thirdweb-dev/react";
 import UserComplaint from "./UserComplaint";
 import ViewMore from "./components/ViewMore";
 import Navbar from "./components/Navbar";
-import AboutUs from "./components/AboutUs";
+import Footer from "./components/footer";
 
 const Home = () => {
   const status = useConnectionStatus();
@@ -43,7 +43,7 @@ const Home = () => {
             </div>
           </div>
           <ViewMore />
-          <AboutUs />
+          <Footer />
         </div>
       )}
     </div>
