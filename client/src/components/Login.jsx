@@ -26,7 +26,7 @@ const Login = () => {
       <div className="flex items-center justify-center ">
         <div className="shadow-2xl rounded-lg p-20 border-2 border-gray-100 bg-transparent backdrop-filter backdrop-blur-lg mt-20">
           <h1 className="text-2xl font-bold  text-white text-center uppercase">
-            OfferLogin
+            Officer Login
           </h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="input-box relative w-80 mt-6 border-b border-white">

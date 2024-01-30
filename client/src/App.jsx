@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Error from "./components/Error";
 import Admin from "./components/Admin";
 import AboutUs from "./components/AboutUs";
+import Services from "./components/Services";
 function App() {
   return (
     <ThirdwebProvider
@@ -24,6 +25,7 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path="/Admin" element={<Admin />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/Services" element={<Services />} />
         </Routes>
       </div>
     </ThirdwebProvider>
