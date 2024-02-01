@@ -3,10 +3,7 @@ import Navbar from "./Navbar";
 
 const AboutUs = () => {
   return (
-    <div
-      className="bg-gradient-to-br from-stone-300 via-zinc-400 to-zinc-900 min-h-screen flex flex-col"
-      id="content3"
-    >
+    <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen">
       <Navbar />
       <div className="container mx-auto p-4 md:p-8 flex-grow overflow-y-auto">
         <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">
