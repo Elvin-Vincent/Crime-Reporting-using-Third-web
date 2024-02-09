@@ -1,9 +1,39 @@
+import React from "react";
 import { useDisconnect } from "@thirdweb-dev/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { UploadOutlined } from "@ant-design/icons";
+
+import { Button, message, Upload } from "antd";
 
 const UserComplaint = () => {
   const disconnect = useDisconnect();
+
+  const props = {
+    name: "file",
+    action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+    headers: {
+      authorization: "authorization-text",
+    },
+    onChange(info) {
+      if (info.file.status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === "done") {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    progress: {
+      strokeColor: {
+        "0%": "#108ee9",
+        "100%": "#87d068",
+      },
+      strokeWidth: 3,
+      format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
+    },
+  };
 
   return (
     <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% text-white min-h-screen">
@@ -14,12 +44,12 @@ const UserComplaint = () => {
         <div className="border-2 border-neutral-100 p-6 rounded-lg shadow-2xl w-full max-w-md mt-24 bg-white dark:bg-transparent bg-opacity-70 backdrop-filter backdrop-blur-md">
           <form>
             <div className="mb-6">
-              <h1 className="text-2xl font-bold mb-4 text-center text-red-800 uppercase">
+              <h1 className="text-2xl font-bold mb-4 text-center text-white uppercase">
                 Complaint Registration
               </h1>
               <label
                 htmlFor="photo"
-                className="block mb-2 text-sm font-medium text-gray-800 flex items-center"
+                className=" mb-2 text-sm font-medium text-gray-800 flex items-center"
                 style={{ fontFamily: "Roboto, sans-serif" }}
               >
                 <FontAwesomeIcon
@@ -28,13 +58,9 @@ const UserComplaint = () => {
                 />
                 Upload a Photo
               </label>
-              <input
-                type="file"
-                id="photo"
-                accept="image/*"
-                className="block w-full px-4 py-2 text-sm text-gray-800 border border-gray-300 rounded-lg bg-transparent dark:text-white dark:border-white dark:bg-transparent focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Please upload a photo of the crime scene"
-              />
+              <Upload {...props}>
+                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+              </Upload>
             </div>
             <div className="mb-6">
               <label

@@ -10,7 +10,7 @@ const Home = () => {
   const status = useConnectionStatus();
 
   return (
-    <div>
+    <div className=" h-screen bg-center bg-cover bg-img1">
       {status === "connected" ? (
         <UserComplaint />
       ) : (

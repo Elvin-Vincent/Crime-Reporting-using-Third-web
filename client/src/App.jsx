@@ -18,7 +18,7 @@ function App() {
       //   domain: "http://localhost:3000",
       // }}
     >
-      <div className=" h-screen bg-center bg-cover bg-img1">
+      <div>
         <Routes>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />

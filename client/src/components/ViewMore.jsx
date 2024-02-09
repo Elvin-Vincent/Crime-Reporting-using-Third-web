@@ -4,7 +4,7 @@ const ViewMore = () => {
   return (
     <div className=" p-4  bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% text-white">
       <div className="text-black py-12 text-5xl font-bold" id="content2">
-        <h1 className="text-red-600">
+        <h1 className="text-red-600 text-center">
           Importance of Anonymous Crime Reporting Using Blockchain
         </h1>
       </div>
