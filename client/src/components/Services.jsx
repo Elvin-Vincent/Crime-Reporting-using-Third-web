@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const timeAutoNext = 15000;
+  const timeAutoNext = 10000;
 
   // Define your thumbnail items here
   const thumbnailItems = [
