@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "./style.css";
+import "./Services.css";
 import Navbar from "./Navbar";
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const timeAutoNext = 10000;
+  const timeAutoNext = 7000;
 
   // Define your thumbnail items here
   const thumbnailItems = [
     { id: 1, src: "images/drug.jpeg" },
     { id: 2, src: "images/waste.jpg" },
     { id: 3, src: "images/childlabour.jpg" },
-    { id: 4, src: "images/img4.jpg" },
+    { id: 4, src: "images/sand.jpg" },
   ];
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Services = () => {
 
   useEffect(() => {
     const runNextAuto = setTimeout(() => {
-      document.getElementById("next")?.click(); // Using optional chaining to avoid errors if element not found
+      document.getElementById("next")?.click();
     }, timeAutoNext);
     return () => clearTimeout(runNextAuto);
   }, [activeIndex, timeAutoNext]);
@@ -41,7 +41,7 @@ const Services = () => {
       document
         .querySelector(".carousel .thumbnail")
         .appendChild(thumbnailItemsDom[0]);
-      document.querySelector(".carousel")?.classList.add("next"); // Using optional chaining to avoid errors if element not found
+      document.querySelector(".carousel")?.classList.add("next");
     } else {
       document
         .querySelector(".carousel .list")
@@ -49,12 +49,12 @@ const Services = () => {
       document
         .querySelector(".carousel .thumbnail")
         .prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
-      document.querySelector(".carousel")?.classList.add("prev"); // Using optional chaining to avoid errors if element not found
+      document.querySelector(".carousel")?.classList.add("prev");
     }
 
     setTimeout(() => {
-      document.querySelector(".carousel")?.classList.remove("next"); // Using optional chaining to avoid errors if element not found
-      document.querySelector(".carousel")?.classList.remove("prev"); // Using optional chaining to avoid errors if element not found
+      document.querySelector(".carousel")?.classList.remove("next");
+      document.querySelector(".carousel")?.classList.remove("prev");
     }, 500);
   };
 

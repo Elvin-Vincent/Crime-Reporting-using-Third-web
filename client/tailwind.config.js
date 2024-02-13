@@ -7,6 +7,7 @@ export default {
         img1: "url('/public/images/bgimg.jpg')",
         img2: "url('/public/images/bging10.webp')",
       },
+      screens: { xs: "480px" },
     },
   },
   plugins: [],

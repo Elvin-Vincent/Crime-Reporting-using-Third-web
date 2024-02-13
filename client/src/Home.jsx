@@ -5,12 +5,13 @@ import UserComplaint from "./UserComplaint";
 import ViewMore from "./components/ViewMore";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+import { Together } from "./components/Together";
 
 const Home = () => {
   const status = useConnectionStatus();
 
   return (
-    <div className=" h-screen bg-center bg-cover bg-img1">
+    <div className=" h-screen bg-center bg-cover bg-img1 ">
       {status === "connected" ? (
         <UserComplaint />
       ) : (
@@ -43,6 +44,7 @@ const Home = () => {
             </div>
           </div>
           <ViewMore />
+          <Together />
           <Footer />
         </div>
       )}

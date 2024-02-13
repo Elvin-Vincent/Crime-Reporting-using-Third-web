@@ -10,8 +10,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Simulate sending login credentials to the server
-    // In a real application, this should be done through an API call
     if (email === "username" && password === "password") {
       console.log("Login successful!");
       navigate("/Admin");
@@ -24,12 +22,12 @@ const Login = () => {
     <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen">
       <Navbar />
       <div className="flex items-center justify-center ">
-        <div className="shadow-2xl rounded-lg p-20 border-2 border-gray-100 bg-transparent backdrop-filter backdrop-blur-lg mt-20">
+        <div className="sm:shadow-2xl sm:rounded-lg p-8 md:p-20 border-2 border-gray-100 bg-transparent backdrop-filter backdrop-blur-lg mt-20 sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
           <h1 className="text-2xl font-bold  text-white text-center uppercase">
             Officer Login
           </h1>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="input-box relative w-80 mt-6 border-b border-white">
+            <div className="input-box relative mt-6 border-b border-white">
               <label className="block text-sm font-medium mb-2 text-white uppercase">
                 Username
               </label>
@@ -41,7 +39,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="input-box relative w-80 mt-6 border-b border-white">
+            <div className="input-box relative mt-6 border-b border-white">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium mb-2 text-white uppercase"
