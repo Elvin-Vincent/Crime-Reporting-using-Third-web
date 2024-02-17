@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -22,18 +21,26 @@ export const Together = () => {
   }, []);
 
   return (
-    <div className="flex pb-40 ">
-      <div className=" w-1/3 flex justify-center  ">
-        <img id="rotatingImage" src="images/people3.png" alt="people" />
+    <div className="flex flex-col md:flex-row items-center pb-10 md:pb-40 ">
+      <div className="md:w-1/3 flex justify-center">
+        <img
+          id="rotatingImage"
+          src="images/people3.png"
+          alt="people"
+          className="max-w-xs md:max-w-none"
+        />
       </div>
-      <div className="w-1/2 ml-44">
+      <div className="md:w-1/2 md:ml-44">
         <h1
-          className="text-3xl font-bold mb-2 text-black mt-10 text-center "
+          className="text-3xl font-bold mb-2 text-black mt-10 text-center md:text-left"
           data-aos="zoom-in"
         >
           TOGETHER WE MAKE OUR WORLD SECURE
         </h1>
-        <p className="text-black text-sm font-bold mt-14 " data-aos="fade-left">
+        <p
+          className="text-black text-sm font-bold mt-4 md:mt-20"
+          data-aos="fade-left"
+        >
           Public awareness and support for reporting crimes on a website
           utilizing blockchain technology are crucial steps towards creating a
           safer world to live in. Blockchain, known for its immutable and

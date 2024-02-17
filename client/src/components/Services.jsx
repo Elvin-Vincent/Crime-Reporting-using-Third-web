@@ -154,29 +154,25 @@ const Services = () => {
         <div className="item">
           <img src="images/drug.jpeg" />
           <div className="content">
-            <div className="title">Name Slider</div>
-            <div className="description">Description</div>
+            <div className="title text-center"> DRUG TRAFFICKING REPORTING</div>
           </div>
         </div>
         <div className="item">
           <img src="images/waste.jpg" />
           <div className="content">
-            <div className="title">Name Slider</div>
-            <div className="description">Description</div>
+            <div className="title text-center">PUBLIC WASTE REPORTING</div>
           </div>
         </div>
         <div className="item">
           <img src="images/childlabour.jpeg" />
           <div className="content">
-            <div className="title">Name Slider</div>
-            <div className="description">Description</div>
+            <div className="title text-center">CHILD LABOUR REPORTING</div>
           </div>
         </div>
         <div className="item">
           <img src="images/sand.jpg" />
           <div className="content">
-            <div className="title">Name Slider</div>
-            <div className="description">Description</div>
+            <div className="title text-center">SAND MINING REPORTING</div>
           </div>
         </div>
       </div>

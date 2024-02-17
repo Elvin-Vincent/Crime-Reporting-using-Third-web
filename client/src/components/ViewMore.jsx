@@ -22,11 +22,11 @@ function ViewMore() {
 
           <div className="grid grid-cols-2 gap-8 mt-10">
             <div className="m-2 flex items-start" data-aos="zoom-in">
-              <img
+              {/* <img
                 src="images/unnamed.png"
                 alt="Logo"
                 className="w-8  mr-2 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl font-bold mb-2">
                   Secure and Anonymous Reporting
@@ -42,11 +42,11 @@ function ViewMore() {
             </div>
 
             <div className="m-2 flex items-start" data-aos="zoom-in">
-              <img
+              {/* <img
                 src="images/unnamed.png"
                 alt="Logo"
                 className="w-8  mr-2 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl font-bold mb-2">
                   Immutable Blockchain Records
@@ -62,11 +62,11 @@ function ViewMore() {
               </div>
             </div>
             <div className="m-2 flex items-start" data-aos="zoom-in">
-              <img
+              {/* <img
                 src="images/unnamed.png"
                 alt="Logo"
                 className="w-8  mr-2 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl font-bold mb-2">
                   Decentralized Verification
@@ -83,11 +83,11 @@ function ViewMore() {
               </div>
             </div>
             <div className="m-2 flex items-start" data-aos="zoom-in">
-              <img
+              {/* <img
                 src="images/unnamed.png"
                 alt="Logo"
                 className="w-8  mr-2 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl font-bold mb-2">
                   Smart Contract Execution
@@ -105,11 +105,11 @@ function ViewMore() {
               </div>
             </div>
             <div className="m-2 flex items-start" data-aos="zoom-in">
-              <img
+              {/* <img
                 src="images/unnamed.png"
                 alt="Logo"
                 className="w-8  mr-2 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl font-bold mb-2">
                   User Privacy Protection
@@ -125,11 +125,11 @@ function ViewMore() {
               </div>
             </div>
             <div className="m-2 flex items-start" data-aos="zoom-in">
-              <img
+              {/* <img
                 src="images/unnamed.png"
                 alt="Logo"
                 className="w-8  mr-2 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col justify-between">
                 <h2 className="text-2xl font-bold mb-2">
                   Community Engagement Tools

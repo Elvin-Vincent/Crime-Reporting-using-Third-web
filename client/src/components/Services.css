@@ -80,7 +80,7 @@ a {
   bottom: 50px;
   left: 50%;
   width: max-content;
-  z-index: 100;
+  z-index: 5;
   display: flex;
   gap: 20px;
 }
@@ -114,7 +114,7 @@ a {
   position: absolute;
   top: 80%;
   right: 52%;
-  z-index: 100;
+  z-index: 70;
   width: 300px;
   max-width: 30%;
   display: flex;
@@ -198,7 +198,7 @@ a {
   animation: showThumbnail 0.5s linear 1 forwards;
 }
 .carousel.prev .list .item img {
-  z-index: 100;
+  z-index: 50;
 }
 @keyframes showThumbnail {
   from {
@@ -220,7 +220,7 @@ a {
 
 .carousel .time {
   position: absolute;
-  z-index: 1000;
+  z-index: 60;
   width: 0%;
   height: 3px;
   background-color: #f1683a;
