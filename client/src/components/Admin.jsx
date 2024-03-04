@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Admin.css"; // Import your CSS file
+import "./Admin.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserShield,
@@ -16,8 +16,10 @@ import {
   faClipboardList,
   faFileCircleCheck,
   faWallet,
-} from "@fortawesome/free-solid-svg-icons"; // Import the necessary icons
-import { ConnectWallet, useConnectionStatus } from "@thirdweb-dev/react";
+  faPlus,
+  faCircleXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { ConnectWallet } from "@thirdweb-dev/react";
 
 const Admin = () => {
   const [isSidebarHidden, setIsSidebarHidden] = useState(
@@ -25,6 +27,8 @@ const Admin = () => {
   );
 
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [toDos, setTodos] = useState([]);
+  const [toDo, setTodo] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,15 +56,12 @@ const Admin = () => {
   };
 
   const handleSideMenuClick = (e) => {
-    // Get the clicked menu item's parent li element
     const clickedMenuItem = e.currentTarget.parentElement;
 
-    // Remove 'active' class from all side menu items
     document
       .querySelectorAll("#sidebar .side-menu.top li")
       .forEach((item) => item.classList.remove("active"));
 
-    // Add 'active' class to the clicked menu item
     clickedMenuItem.classList.add("active");
   };
 
@@ -136,11 +137,11 @@ const Admin = () => {
           <i className="bx cursor-pointer" onClick={toggleSidebar}>
             <FontAwesomeIcon icon={faBars} style={{ color: "#000305" }} />
           </i>
-          <a href="#" class="nav-link">
+          <a href="#" class="nav-link ">
             Categories
           </a>
           <form action="#">
-            <div className="form-input">
+            <div className="form-input ">
               <input type="search" placeholder="Search..." />
               <button type="submit" className="search-btn">
                 <i class="bx ">
@@ -297,30 +298,50 @@ const Admin = () => {
             <div class="todo">
               <div class="head">
                 <h3>Todos</h3>
-                <i class="bx bx-plus"></i>
-                <i class="bx bx-filter"></i>
               </div>
-              <ul class="todo-list">
-                <li class="completed">
-                  <p>Todo List</p>
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </li>
-                <li class="completed">
-                  <p>Todo List</p>
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </li>
-                <li class="not-completed">
-                  <p>Todo List</p>
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </li>
-                <li class="completed">
-                  <p>Todo List</p>
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </li>
-                <li class="not-completed">
-                  <p>Todo List</p>
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </li>
+              <ul className="todo-list">
+                <div className="input flex items-center border-b border-blue-300 mb-4">
+                  <input
+                    value={toDo}
+                    onChange={(e) => setTodo(e.target.value)}
+                    type="text"
+                    placeholder="Add to list..."
+                    className="w-full py-2 px-3 focus:outline-none"
+                  />
+                  <i
+                    onClick={() => setTodos([...toDos, toDo])}
+                    className="fas fa-plus ml-4 cursor-pointer"
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </i>
+                </div>
+                <div className="todos">
+                  {toDos.map((value, i) => (
+                    <div
+                      className="todo flex justify-between items-center py-2 border-b border-gray-300"
+                      key={i}
+                    >
+                      <div className="left flex items-center">
+                        <input type="checkbox" className="mr-3" />
+                        <p className="text-gray-800">{value}</p>
+                      </div>
+                      <div className="right">
+                        <i
+                          onClick={() =>
+                            setTodos((previoustoDos) => {
+                              const updatedTodos = [...previoustoDos];
+                              updatedTodos.splice(i, 1);
+                              return updatedTodos;
+                            })
+                          }
+                          className="fas fa-times cursor-pointer"
+                        >
+                          <FontAwesomeIcon icon={faCircleXmark} />
+                        </i>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </ul>
             </div>
           </div>

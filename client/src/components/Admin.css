@@ -43,7 +43,7 @@ body.dark {
 
 body {
   background: var(--grey);
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 /* SIDEBAR */
@@ -67,24 +67,25 @@ body {
   width: 60px;
 }
 #sidebar .brand {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: bold;
   height: 56px;
   display: flex;
   align-items: center;
-  color: var(--blue);
+  color: var(--red);
   position: sticky;
   top: 0;
   left: 0;
   background: var(--light);
   z-index: 500;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   box-sizing: content-box;
 }
 #sidebar .brand .bx {
   min-width: 60px;
   display: flex;
   justify-content: center;
+  color: var(--blue);
 }
 #sidebar .side-menu {
   width: 100%;
