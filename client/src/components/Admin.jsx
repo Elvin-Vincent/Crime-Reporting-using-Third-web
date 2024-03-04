@@ -1,99 +1,333 @@
-import React from "react";
-import Navbar from "./Navbar";
+import React, { useState, useEffect } from "react";
+import "./Admin.css"; // Import your CSS file
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserShield,
+  faUser,
+  faBell,
+  faMagnifyingGlass,
+  faBars,
+  faChalkboard,
+  faFileLines,
+  faChartLine,
+  faMessage,
+  faGear,
+  faRightFromBracket,
+  faClipboardList,
+  faFileCircleCheck,
+  faWallet,
+} from "@fortawesome/free-solid-svg-icons"; // Import the necessary icons
+import { ConnectWallet, useConnectionStatus } from "@thirdweb-dev/react";
 
 const Admin = () => {
+  const [isSidebarHidden, setIsSidebarHidden] = useState(
+    window.innerWidth < 768
+  );
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSidebarHidden(window.innerWidth < 768);
+      if (window.innerWidth > 576) {
+        setIsSearchFormVisible(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarHidden(!isSidebarHidden);
+  };
+
+  const handleDarkModeChange = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  };
+
+  const handleSideMenuClick = (e) => {
+    // Get the clicked menu item's parent li element
+    const clickedMenuItem = e.currentTarget.parentElement;
+
+    // Remove 'active' class from all side menu items
+    document
+      .querySelectorAll("#sidebar .side-menu.top li")
+      .forEach((item) => item.classList.remove("active"));
+
+    // Add 'active' class to the clicked menu item
+    clickedMenuItem.classList.add("active");
+  };
+
   return (
     <div>
-      <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen">
-        {/* <div className="bg-cover bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black min-h-screen"> */}
-        <Navbar />
-        <nav className="p-4">
-          <div className="container mx-auto flex justify-center items-center">
-            {/* Centered h1 tag */}
-            <h1 className="text-red-500 text-5xl font-bold uppercase">
-              Officer Dashboard
-            </h1>
-          </div>
+      {/* SIDEBAR */}
+      <section id="sidebar" className={isSidebarHidden ? "hide" : ""}>
+        <a href="#" className="brand ml-4">
+          <i class="bx">
+            <FontAwesomeIcon icon={faUserShield} />
+          </i>
+          <h1 className=" text-2xl ml-4 uppercase font-bold">Safe Whistle</h1>
+        </a>
+        <ul className="side-menu top">
+          <li className="active">
+            <a href="#" onClick={handleSideMenuClick}>
+              <i className="bx">
+                <FontAwesomeIcon icon={faChalkboard} />
+              </i>
+              <span className="text">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={handleSideMenuClick}>
+              <i class="bx bxs-shopping-bag-alt">
+                <FontAwesomeIcon icon={faFileLines} />
+              </i>
+              <span class="text">Complaints</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={handleSideMenuClick}>
+              <i class="bx bxs-doughnut-chart">
+                <FontAwesomeIcon icon={faChartLine} />
+              </i>
+              <span class="text">Analytics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={handleSideMenuClick}>
+              <i class="bx bxs-message-dots">
+                <FontAwesomeIcon icon={faMessage} />
+              </i>
+              <span class="text">Message</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="side-menu">
+          <li>
+            <a href="#" onClick={handleSideMenuClick}>
+              <i class="bx bxs-cog">
+                <FontAwesomeIcon icon={faGear} />
+              </i>
+              <span class="text">Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="logout">
+              <i class="bx bxs-log-out-circle">
+                <FontAwesomeIcon icon={faRightFromBracket} />
+              </i>
+              <span class="text">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      {/* SIDEBAR */}
+
+      {/* CONTENT */}
+      <section id="content">
+        {/* NAVBAR */}
+        <nav>
+          <i className="bx cursor-pointer" onClick={toggleSidebar}>
+            <FontAwesomeIcon icon={faBars} style={{ color: "#000305" }} />
+          </i>
+          <a href="#" class="nav-link">
+            Categories
+          </a>
+          <form action="#">
+            <div className="form-input">
+              <input type="search" placeholder="Search..." />
+              <button type="submit" className="search-btn">
+                <i class="bx ">
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlass}
+                    style={{ color: "#ffffff" }}
+                  />
+                </i>
+              </button>
+            </div>
+          </form>
+          <input
+            type="checkbox"
+            id="switch-mode"
+            hidden
+            onChange={handleDarkModeChange}
+          />
+          <label for="switch-mode" class="switch-mode"></label>
+          <a href="#" className="notification">
+            <i className="bx ">
+              <FontAwesomeIcon icon={faBell} />
+            </i>
+            <span className="num">8</span>
+          </a>
+          <a href="#" className="profile">
+            <FontAwesomeIcon icon={faUser} />
+          </a>
         </nav>
-        <div className="container mx-auto mt-8 p-4">
-          <h2 className="text-2xl font-bold mb-4">Recent Reports</h2>
+        {/* NAVBAR */}
 
-          {/* Cards */}
-          <div class="mt-8 grid lg:grid-cols-3 gap-10">
-            <div class="group h-96 w-80 [perspective:1000px]">
-              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                <div class="absolute inset-0">
-                  <img
-                    class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                    src="public\images\unnamed.png"
-                    alt=""
-                  />
-                </div>
-                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  {/* <div class="flex min-h-full flex-col items-center justify-center">
-                    <h1 class="text-3xl font-bold">BMW X4</h1>
-                    <p class="text-lg">5 seater SUV</p>
-                    <p class="text-base">
-                      3L petrol engine along with automatic transmission{" "}
-                    </p>
-                    <button class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
-                      Read More
-                    </button>
-                  </div> */}
-                </div>
-              </div>
+        {/* MAIN */}
+        <main>
+          <div className="head-title">
+            <div className="left">
+              <h1>Dashboard</h1>
+              <ul className="breadcrumb">
+                <li>
+                  <a href="#">Dashboard</a>
+                </li>
+                <li>
+                  <i className="bx bx-chevron-right"></i>
+                </li>
+                <li>
+                  <a className="active" href="#">
+                    Home
+                  </a>
+                </li>
+              </ul>
             </div>
 
-            <div class="group h-96 w-80 [perspective:1000px]">
-              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                <div class="absolute inset-0">
-                  <img
-                    class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                    src="public\images\unnamed.png"
-                    alt=""
-                  />
-                </div>
-                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  {/* <div class="flex min-h-full flex-col items-center justify-center">
-                    <h1 class="text-3xl font-bold">Mercedes EQE</h1>
-                    <p class="text-lg">Electric SUV</p>
-                    <p class="text-base">
-                      power of 402.3bhp and 858nm of torque.
-                    </p>
-                    <button class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
-                      Read More
-                    </button>
-                  </div> */}
-                </div>
+            <span>
+              <ConnectWallet />
+            </span>
+          </div>
+          <ul className="box-info">
+            <li>
+              <i className="bx bxs-calendar-check">
+                <FontAwesomeIcon icon={faClipboardList} />
+              </i>
+              <span className="text">
+                <h3>1020</h3>
+                <p>New Complaints</p>
+              </span>
+            </li>
+            <li>
+              <i class="bx bxs-group">
+                <FontAwesomeIcon icon={faFileCircleCheck} />
+              </i>
+              <span className="text">
+                <h3>284</h3>
+                <p>Inspected</p>
+              </span>
+            </li>
+            <li>
+              <i className="bx bxs-dollar-circle">
+                <FontAwesomeIcon icon={faWallet} />
+              </i>
+              <span className="text">
+                <h3>$2543</h3>
+                <p>Balance</p>
+              </span>
+            </li>
+          </ul>
+
+          <div class="table-data">
+            <div class="order">
+              <div class="head">
+                <h3>Recent Orders</h3>
+                <i class="bx bx-search"></i>
+                <i class="bx bx-filter"></i>
               </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Address</th>
+                    <th>Date Order</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src="img/people.png" />
+                      <p>vdfvfdgr4t454664df</p>
+                    </td>
+                    <td>01-10-2021</td>
+                    <td>
+                      <span class="status completed">Completed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="img/people.png" />
+                      <p>dgrg5656ggew3r3r</p>
+                    </td>
+                    <td>01-10-2021</td>
+                    <td>
+                      <span class="status pending">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="img/people.png" />
+                      <p>xvfssgrgr4t4t6567d</p>
+                    </td>
+                    <td>01-10-2021</td>
+                    <td>
+                      <span class="status process">Process</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="img/people.png" />
+                      <p>vsgvsfr557575t33r3</p>
+                    </td>
+                    <td>01-10-2021</td>
+                    <td>
+                      <span class="status pending">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="img/people.png" />
+                      <p>ghdhhdfbdf465675r</p>
+                    </td>
+                    <td>01-10-2021</td>
+                    <td>
+                      <span class="status completed">Completed</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="group h-96 w-80 [perspective:1000px]">
-              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                <div class="absolute inset-0">
-                  <img
-                    class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                    src="public\images\unnamed.png"
-                    alt=""
-                  />
-                </div>
-                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  {/* <div class="flex min-h-full flex-col items-center justify-center">
-                    <h1 class="text-3xl font-bold">BMW iX1</h1>
-                    <p class="text-lg"> 5 seater SUV</p>
-                    <p class="text-base">
-                      {" "}
-                      power of 308.43bhp and 494nm of torque
-                    </p>
-                    <button class="mt-2 rounded-md bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-900">
-                      Read More
-                    </button>
-                  </div> */}
-                </div>
+            <div class="todo">
+              <div class="head">
+                <h3>Todos</h3>
+                <i class="bx bx-plus"></i>
+                <i class="bx bx-filter"></i>
               </div>
+              <ul class="todo-list">
+                <li class="completed">
+                  <p>Todo List</p>
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </li>
+                <li class="completed">
+                  <p>Todo List</p>
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </li>
+                <li class="not-completed">
+                  <p>Todo List</p>
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </li>
+                <li class="completed">
+                  <p>Todo List</p>
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </li>
+                <li class="not-completed">
+                  <p>Todo List</p>
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
+        </main>
+        {/* MAIN */}
+      </section>
+      {/* CONTENT */}
     </div>
   );
 };

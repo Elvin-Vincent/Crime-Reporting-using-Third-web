@@ -31,7 +31,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex justify-center mt-60 mb-7">
+            <div className="flex justify-center mt-72 mb-20 ">
               <div className="bg-neutral-400 text-black rounded-full py-2 px-3 text-xs cursor-pointer uppercase tracking-wider transform hover:scale-125 hover:bg-opacity-50 transition ease-in duration-200">
                 <ScrollLink
                   to="content2"
