@@ -12,7 +12,7 @@ const Login = () => {
 
     if (email === "username" && password === "password") {
       console.log("Login successful!");
-      navigate("/Admin");
+      navigate("/dashboard");
     } else {
       console.log("Invalid credentials. Please try again.");
     }

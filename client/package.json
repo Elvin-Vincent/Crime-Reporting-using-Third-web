@@ -17,6 +17,7 @@
     "@thirdweb-dev/sdk": "^4",
     "antd": "^5.13.3",
     "aos": "^2.3.4",
+    "axios": "^1.6.7",
     "ethers": "^5",
     "react": "^18.2",
     "react-dom": "^18.2",

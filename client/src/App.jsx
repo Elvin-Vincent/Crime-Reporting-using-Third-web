@@ -5,7 +5,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Error from "./components/Error";
-import Admin from "./components/Admin";
+import Dashboard from "./components/Dashboard";
 import AboutUs from "./components/AboutUs";
 import Services from "./components/Services";
 function App() {
@@ -22,10 +22,11 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Error />} />
-          <Route path="/Admin" element={<Admin />} />
+
+          <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/Services" element={<Services />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </ThirdwebProvider>
