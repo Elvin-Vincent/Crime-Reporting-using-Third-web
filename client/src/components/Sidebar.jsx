@@ -24,7 +24,7 @@ const Sidebar = ({ isSidebarHidden }) => {
 
   return (
     <section id="sidebar" className={isSidebarHidden ? "hide" : ""}>
-      <div className="brand ml-4">
+      <div className="brand ml-2">
         <i className="bx">
           <FontAwesomeIcon icon={faUserShield} />
         </i>

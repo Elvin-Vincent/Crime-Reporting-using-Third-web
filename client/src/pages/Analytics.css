@@ -1,0 +1,32 @@
+.chart {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 2vw;
+  flex-wrap: wrap;
+}
+
+.dataCard {
+  border-radius: 0.5em;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 1em;
+}
+
+.lineChart {
+  width: 92%;
+  height: 20rem;
+}
+
+.barChart {
+  width: 50%;
+  height: 20rem;
+}
+
+.pieChart {
+  width: 40%;
+  height: 20rem;
+}

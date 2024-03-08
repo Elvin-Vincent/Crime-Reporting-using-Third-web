@@ -1,0 +1,62 @@
+[
+  {
+    "label": "Jan",
+    "report": 64,
+    "invest": 32
+  },
+  {
+    "label": "Feb",
+    "report": 54,
+    "invest": 42
+  },
+  {
+    "label": "Mar",
+    "report": 90,
+    "invest": 50
+  },
+  {
+    "label": "Apr",
+    "report": 82,
+    "invest": 64
+  },
+  {
+    "label": "May",
+    "report": 91,
+    "invest": 41
+  },
+  {
+    "label": "Jun",
+    "report": 103,
+    "invest": 83
+  },
+  {
+    "label": "Jul",
+    "report": 90,
+    "invest": 44
+  },
+  {
+    "label": "Aug",
+    "report": 82,
+    "invest": 37
+  },
+  {
+    "label": "Sep",
+    "report": 62,
+    "invest": 43
+  },
+  {
+    "label": "Oct",
+    "report": 82,
+    "invest": 45
+  },
+  {
+    "label": "Nov",
+    "report": 56,
+    "invest": 47
+  },
+  {
+    "label": "Dec",
+    "report": 87,
+    "invest": 39
+  }
+]
