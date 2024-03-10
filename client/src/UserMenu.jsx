@@ -10,7 +10,7 @@ import {
 import { UploadOutlined } from "@ant-design/icons";
 import { Button, message, Upload } from "antd";
 
-const UserComplaint = () => {
+const UserMenu = () => {
   const [location, setLocation] = useState("");
   const [details, setDetails] = useState("");
   const disconnect = useDisconnect();
@@ -159,4 +159,4 @@ const UserComplaint = () => {
   );
 };
 
-export default UserComplaint;
+export default UserMenu;

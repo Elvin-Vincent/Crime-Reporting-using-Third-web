@@ -8,7 +8,7 @@ function ViewMore() {
   }, []);
 
   return (
-    <div className="pt-10 bg-white " id="content2">
+    <div className="pt-10  " id="content2">
       <div className=" px-4">
         <div className="text-black font-bold mb-28 " data-aos="fade-down">
           <h1 className="text-red-600 text-center text-5xl mt-10">

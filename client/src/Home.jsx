@@ -1,20 +1,21 @@
 import "./Home.css";
 import { Link as ScrollLink } from "react-scroll";
 import { ConnectWallet, useConnectionStatus } from "@thirdweb-dev/react";
-import UserComplaint from "./UserComplaint";
+import Menu from "./UserMenu";
 import ViewMore from "./components/ViewMore";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import { Together } from "./components/Together";
+import { useDisconnect } from "@thirdweb-dev/react";
 
 const Home = () => {
   const status = useConnectionStatus();
 
   return (
-    <div className=" h-screen bg-center bg-cover bg-img1">
+    <div className=" bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen ">
       <div className="backdrop-blur-sm bg-white/10">
         {status === "connected" ? (
-          <UserComplaint />
+          <Menu />
         ) : (
           <div className="uppercase  ">
             <Navbar />
