@@ -1,7 +1,7 @@
 import "./Home.css";
 import { Link as ScrollLink } from "react-scroll";
 import { ConnectWallet, useConnectionStatus } from "@thirdweb-dev/react";
-import Menu from "./UserMenu";
+import Menu from "./components/UserMenu";
 import ViewMore from "./components/ViewMore";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";

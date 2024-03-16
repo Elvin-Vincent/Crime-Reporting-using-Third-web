@@ -8,6 +8,7 @@ import Error from "./components/Error";
 import Dashboard from "./components/Dashboard";
 import AboutUs from "./components/AboutUs";
 import Services from "./components/Services";
+import UserMenu from "./components/UserMenu";
 function App() {
   return (
     <ThirdwebProvider
@@ -27,6 +28,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/Services" element={<Services />} />
           <Route path="*" element={<Error />} />
+          <Route path="/userdashboard/*" element={<UserMenu />} />
         </Routes>
       </div>
     </ThirdwebProvider>

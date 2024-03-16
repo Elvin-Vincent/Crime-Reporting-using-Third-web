@@ -1,37 +1,40 @@
 import React from "react";
 import "./MainContainer.css";
 import Banner from "../img/1.jpg";
-import CardMain from "./CardMain";
+import CardMain from "../components/CardMain";
 import Card1 from "../img/card1.jpg";
 import Card2 from "../img/card2.jpg";
 import Card3 from "../img/card3.jpg";
 import Card4 from "../img/card4.jpg";
 import Card5 from "../img/card5.jpg";
 import Card6 from "../img/card6.jpg";
-import MainRightTopCard from "./MainRightTopCard";
-import MainRightBottomCard from "./MainRightBottomCard";
+import MainRightTopCard from "../components/MainRightTopCard";
+import MainRightBottomCard from "../components/MainRightBottomCard";
+import { Link } from "react-router-dom";
 
 function MainContainer() {
   return (
     <div className="maincontainer">
       <div className="left">
         <div
-          className="banner "
-          // style={{
-          //   background: `url(${Banner})`,
-          //   backgroundRepeat: "no-repeat",
-          //   backgroundSize: "cover",
-          //   backgroundPosition: "center",
-          // }}
+          className="banner bg-cover bg-center relative"
+          style={{ backgroundImage: `url(${Banner})` }}
         >
-          <div className="textContainer">
-            <h1> Hii Welcome ...</h1>
-            <h2 className="flex justify-end">Balance:157 $</h2>
-
-            <div className="bid flex justify-end ">
-              <a href="#" className="button">
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
+              Welcome to <span className="text-red-600">Safe Whistle</span>
+            </h1>
+            <h2 className="text-lg md:text-xl text-gray-300 mb-6 text-center">
+              Your trusted destination for reporting and resolving issues
+            </h2>
+            <div className="flex justify-center">
+              <Link
+                to="/userdashboard/usercomplaints"
+                className="button text-white"
+              >
                 New Complaint
-              </a>
+              </Link>
             </div>
           </div>
         </div>

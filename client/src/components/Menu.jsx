@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Menu.css";
 import logo from "../img/sw.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faMessage,
   faRightFromBracket,
@@ -108,12 +109,28 @@ function SidebarMenu() {
     <menu>
       <img src={logo} alt="" />
 
-      <ul id="mainMenu">
-        <Icon icon={<FaDelicious />} />
-        <Icon icon={<FaFileUpload />} />
-        <Icon icon={<FaWallet />} />
-        <Icon icon={<FaChartLineRegular />} />
-        <Icon icon={<FaRegClock />} />
+      <ul id="mainMenu" class="flex flex-col justify-center items-center ">
+        <Link to="/userdashboard" className="flex items-center mb-4">
+          <Icon icon={<FaDelicious />} />
+        </Link>
+        <Link
+          to="/userdashboard/usercomplaints"
+          className="flex items-center mb-4"
+        >
+          <Icon icon={<FaFileUpload />} />
+        </Link>
+        <Link to="/userdashboard/userwallet" className="flex items-center mb-4">
+          <Icon icon={<FaWallet />} />
+        </Link>
+        <Link
+          to="/userdashboard/useranalytics"
+          className="flex items-center mb-4"
+        >
+          <Icon icon={<FaChartLineRegular />} />
+        </Link>
+        <Link to="/userdashboard/userrecent" className="flex items-center mb-4">
+          <Icon icon={<FaRegClock />} />
+        </Link>
       </ul>
 
       <ul className="lastMenu">
