@@ -6,12 +6,17 @@ import {
   faFileAlt,
   faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { UploadOutlined } from "@ant-design/icons";
-import { Button, message, Upload } from "antd";
+// import { UploadOutlined } from "@ant-design/icons";
+// import { Button, message, Upload } from "antd";
 
 const UserComplaint = () => {
   const [location, setLocation] = useState("");
   const [details, setDetails] = useState("");
+  const [photo, setPhoto] = useState("");
+
+  const handlePhotoChange = (event) => {
+    setPhoto(event.target.value);
+  };
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
@@ -20,35 +25,35 @@ const UserComplaint = () => {
   const handleDetailsChange = (event) => {
     setDetails(event.target.value);
   };
-  const props = {
-    name: "file",
-    action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
-    headers: {
-      authorization: "authorization-text",
-    },
-    onChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    progress: {
-      strokeColor: {
-        "0%": "#108ee9",
-        "100%": "#87d068",
-      },
-      strokeWidth: 3,
-      format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
-    },
-  };
+  // const props = {
+  //   name: "file",
+  //   action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
+  //   headers: {
+  //     authorization: "authorization-text",
+  //   },
+  //   onChange(info) {
+  //     if (info.file.status !== "uploading") {
+  //       console.log(info.file, info.fileList);
+  //     }
+  //     if (info.file.status === "done") {
+  //       message.success(`${info.file.name} file uploaded successfully`);
+  //     } else if (info.file.status === "error") {
+  //       message.error(`${info.file.name} file upload failed.`);
+  //     }
+  //   },
+  //   progress: {
+  //     strokeColor: {
+  //       "0%": "#108ee9",
+  //       "100%": "#87d068",
+  //     },
+  //     strokeWidth: 3,
+  //     format: (percent) => percent && `${parseFloat(percent.toFixed(2))}%`,
+  //   },
+  // };
 
   return (
     <div className="flex items-center justify-center  h-full">
-      <div className="border-2 border-gray-200 p-6 rounded-lg shadow-2xl w-full max-w-7xl mt-14 lg:mt-20  ">
+      <div className="border-2 border-blue-500 p-6 rounded-lg shadow-2xl w-full max-w-7xl mt-14 lg:mt-20  ">
         <form className="rounded-lg p-6">
           <div className="mb-6">
             <h1 className="text-3xl font-bold mb-2 text-center text-red-500 uppercase">
@@ -65,15 +70,26 @@ const UserComplaint = () => {
                   className="mr-2 text-blue-500"
                 />
                 <h1 className="font-bold">Upload a Photo</h1>
+                <input
+                  type="file"
+                  id="photo"
+                  className="hidden"
+                  value={photo}
+                  onChange={handlePhotoChange}
+                  // You can add more attributes as per your requirement
+                />
+                <span className="ml-2 inline-flex rounded-md shadow-sm">
+                  <label
+                    htmlFor="photo"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition ease-in-out duration-150 cursor-pointer"
+                  >
+                    Choose File
+                  </label>
+                </span>
               </label>
-              <Upload {...props}>
-                <Button className="text-white mt-2" icon={<UploadOutlined />}>
-                  Click to Upload
-                </Button>
-              </Upload>
             </div>
           </div>
-          <div className="mb-6">
+          <div className="mb-6 mt-10">
             <label
               htmlFor="details"
               className="text-sm font-medium text-gray-200 flex items-center"
@@ -108,7 +124,7 @@ const UserComplaint = () => {
               <input
                 type="text"
                 id="location"
-                className="block w-full px-4 py-2 mt-2 text-sm text-white border border-gray-300 rounded-lg  focus:outline-none focus:ring focus:border-blue-300"
+                className="block w-full px-4 py-2 mt-2 text-sm text-black border border-gray-300 rounded-lg  focus:outline-none focus:ring focus:border-blue-300"
                 placeholder="Enter location"
                 value={location}
                 onChange={handleLocationChange}
