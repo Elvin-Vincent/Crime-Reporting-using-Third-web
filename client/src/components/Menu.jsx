@@ -89,6 +89,11 @@ function SidebarMenu() {
       getItem("Account 3", "3"),
     ]),
   ];
+  // const Icon = ({ icon }) => (
+  //   <li>
+  //     <span>{icon}</span>
+  //   </li>
+  // );
 
   const disconnect = useDisconnect();
 
@@ -109,7 +114,7 @@ function SidebarMenu() {
     <menu>
       <img src={logo} alt="" />
 
-      <ul id="mainMenu" class="flex flex-col justify-center items-center ">
+      <ul id="mainMenu" className="flex flex-col justify-center items-center ">
         <Link to="/userdashboard" className="flex items-center mb-4">
           <Icon icon={<FaDelicious />} />
         </Link>

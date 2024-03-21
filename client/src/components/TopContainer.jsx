@@ -107,11 +107,11 @@ function TopContainer() {
         </i>
       </div>
 
-      <div class="profileContainer flex justify-end">
-        <i class="profileIcon mr-4 cursor-pointer">
+      <div className="profileContainer flex justify-end">
+        <i className="profileIcon mr-4 cursor-pointer">
           <FaBell />
         </i>
-        <p class="profileName mb-5"></p>
+        <p className="profileName mb-5"></p>
         <button type="primary" onClick={showDrawer}>
           <FontAwesomeIcon
             icon={faUserSecret}

@@ -1,0 +1,9 @@
+.user {
+  width: 108%;
+  height: calc(
+    100vh - 45px
+  ); /* Adjust height to occupy full viewport height minus 45px */
+  display: flex;
+
+  overflow-y: auto;
+}
