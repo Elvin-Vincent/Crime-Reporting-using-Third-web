@@ -13,11 +13,11 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
-    "0xdE59668c188e0BA3B79F721442c167b92D357e1e"
+    "0x3665655A0913FAED140471fa30D88A72AAA8BA56"
   );
-  const { mutateAsync: createCampaign } = useContractWrite(
+  const { mutateAsync: submitReport } = useContractWrite(
     contract,
-    "createCampaign"
+    "submitReport"
   );
 
   const address = useAddress();
@@ -25,7 +25,7 @@ export const StateContextProvider = ({ children }) => {
 
   const publishCampaign = async (form) => {
     try {
-      const data = await createCampaign({
+      const data = await submitReport({
         args: [
           address, // owner
           form.title, // title
@@ -101,7 +101,7 @@ export const StateContextProvider = ({ children }) => {
         address,
         contract,
         connect,
-        createCampaign: publishCampaign,
+        submitReport: publishCampaign,
         getCampaigns,
         getUserCampaigns,
         donate,
