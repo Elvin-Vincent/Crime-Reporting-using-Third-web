@@ -1,115 +1,69 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ethers } from "ethers";
-import "./UserComplaint.css";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+const contract_address = "0x23C6d47dF17251b21fd37cEff9D8ec580A9BeB2b";
+const privatekey =
+  "04412baef9e02eb3b94888ccf4917d29358562603012ebeebc73198e53230400";
 
-import { useStateContext } from "../context";
-import { createCampaign, money } from "../assets";
-import FormField from "../components/FormField";
-import CustomButton from "../components/CustomButton";
-import Loader from "../components/Loader";
-import { checkIfImage } from "../utils";
+const JWT =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIwZDJkMzhiMC1hY2NhLTRhNzAtYTI1NC03ZjY5ZWJlYTI4NzMiLCJlbWFpbCI6ImVsdmludmEyMjcxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI4OGNkNjUwYmM1ZGYzYzhmMjdmYiIsInNjb3BlZEtleVNlY3JldCI6IjU2ZDNmY2I3ZWZjODMzOWRhNTcwN2ZlZjQyOWI1NDNkNzk3ZmNiYjdiNGY4YzlkYzBlMmM4ZDZlY2FjMjFhZDciLCJpYXQiOjE3MTM4MDgxMzd9.POIjz-M02q2Jn-i0Oe7qjZRxITB8ZWxQ5m_EmFmI0pE";
 
 const UserComplaint = () => {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
-  const [form, setForm] = useState({
-    reporterName: "",
-    crimeTitle: "",
-    crimeDescription: "",
-    location: "",
-    date: "",
-    evidenceImage: "",
-  });
+  const [selectedFile, setSelectedFile] = useState(null);
 
-  const handleFormFieldChange = (fieldName, e) => {
-    setForm({ ...form, [fieldName]: e.target.value });
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(form);
+  const handleSubmit = async () => {
+    if (!selectedFile) {
+      console.log("No file selected.");
+      return;
+    }
 
-    checkIfImage(form.evidenceImage, async (exists) => {
-      if (exists) {
-        setIsLoading(true);
-        await createCampaign({
-          ...form,
-          target: ethers.utils.parseUnits(form.target, 18),
-        });
-        setIsLoading(false);
-        navigate("/");
-      } else {
-        alert("Please provide a valid image URL as evidence.");
-        setForm({ ...form, evidenceImage: "" });
-      }
-    });
+    try {
+      console.log(contract_address, "address here");
+      console.log(privatekey);
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      const pinataMetadata = JSON.stringify({
+        name: selectedFile.name,
+      });
+      formData.append("pinataMetadata", pinataMetadata);
+
+      const pinataOptions = JSON.stringify({
+        cidVersion: 0,
+      });
+      formData.append("pinataOptions", pinataOptions);
+
+      const res = await fetch(
+        "https://api.pinata.cloud/pinning/pinFileToIPFS",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${JWT}`,
+          },
+          body: formData,
+        }
+      );
+      const sdk = ThirdwebSDK.fromPrivateKey(privatekey, "polygon");
+      const resData = await res.json();
+      const IpfsHash = resData.IpfsHash;
+      const contract = await sdk.GetContract(contract_address);
+
+      const TransactionResult = await contract.Write("submitReport", IpfsHash);
+      console.log(TransactionResult);
+
+      console.log(resData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <div className="user flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4 ">
-      {isLoading && <Loader />}
-      <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-gradient-to-r from-purple-700 to-pink-600 rounded-[10px] mt-40">
-        <h1 className="font-epilogue font-bold sm:text-[25px] text-[18px] leading-[38px] text-white ">
-          Report a Crime
-        </h1>
-      </div>
-
-      <form
-        onSubmit={handleSubmit}
-        className="w-full mt-[65px] flex flex-col gap-[30px]"
-      >
-        <div className="flex flex-wrap gap-[40px]">
-          <FormField
-            labelName="Crime Title *"
-            placeholder="Title of the Crime"
-            inputType="text"
-            value={form.crimeTitle}
-            handleChange={(e) => handleFormFieldChange("crimeTitle", e)}
-          />
-        </div>
-
-        <FormField
-          labelName="Description *"
-          placeholder="Description of the Crime"
-          isTextArea
-          value={form.crimeDescription}
-          handleChange={(e) => handleFormFieldChange("crimeDescription", e)}
-        />
-
-        <div className="flex flex-wrap gap-[40px]">
-          <FormField
-            labelName="Location *"
-            placeholder="Location of the Crime"
-            inputType="text"
-            value={form.location}
-            handleChange={(e) => handleFormFieldChange("location", e)}
-          />
-          <FormField
-            labelName="Date *"
-            placeholder="Date of the Crime"
-            inputType="date"
-            value={form.date}
-            handleChange={(e) => handleFormFieldChange("date", e)}
-          />
-        </div>
-
-        <FormField
-          labelName="Evidence Image *"
-          placeholder="URL of Evidence Image"
-          inputType="url"
-          value={form.evidenceImage}
-          handleChange={(e) => handleFormFieldChange("evidenceImage", e)}
-        />
-
-        <div className="flex justify-center items-center mt-[40px] pb-3">
-          <CustomButton
-            btnType="submit"
-            title="Submit Report"
-            styles="bg-gradient-to-r from-green-400 to-green-600 text-white hover:bg-gradient-to-r hover:from-green-500 hover:to-green-700"
-          />
-        </div>
-      </form>
+    <div>
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={handleSubmit}>Upload</button>
     </div>
   );
 };

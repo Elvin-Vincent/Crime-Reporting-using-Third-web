@@ -9,7 +9,7 @@ const AboutUs = () => {
     AOS.init({ duration: 1000 });
   }, []);
   return (
-    <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen text-gray-800 overflow-hidden">
+    <div className="bg-cover bg-gray-100  to-zinc-900 to-90% min-h-screen text-gray-800 overflow-hidden">
       <Navbar />
       <div className="container mx-auto p-4 md:p-8 flex-grow overflow-y-auto">
         <h1
@@ -54,7 +54,7 @@ const AboutUs = () => {
         >
           Meet the Team
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 uppercase">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 uppercase mb-10">
           <div class="flex flex-col gap-8 md:mt-8">
             <div class="p-4 rounded-lg shadow-2xl" data-aos="flip-left">
               <h3 class="text-xl font-bold mb-2">Arjun M S</h3>
@@ -73,7 +73,7 @@ const AboutUs = () => {
             </div>
             <div class="p-4 rounded-lg shadow-2xl" data-aos="flip-right">
               <h3 class="text-xl font-bold mb-2">joyel p r</h3>
-              <p class="text-black">Jyothi Engineering College</p>
+              <p class="text-black ">Jyothi Engineering College</p>
             </div>
           </div>
         </div>

@@ -3,96 +3,86 @@ import React, { useContext, createContext } from "react";
 import {
   useAddress,
   useContract,
-  useMetamask,
   useContractWrite,
+  metamaskWallet,
 } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
-import { EditionMetadataWithOwnerOutputSchema } from "@thirdweb-dev/sdk";
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
-    "0x3665655A0913FAED140471fa30D88A72AAA8BA56"
+    "0x3665655A0913FAED140471fa30D88A72AAA8BA56" // Replace with your contract address
   );
   const { mutateAsync: submitReport } = useContractWrite(
     contract,
     "submitReport"
   );
+  const { mutateAsync: verifyReport } = useContractWrite(
+    contract,
+    "verifyReport"
+  );
 
   const address = useAddress();
-  const connect = useMetamask();
+  const connect = metamaskWallet();
 
-  const publishCampaign = async (form) => {
+  const publishReport = async (ipfsHash) => {
     try {
       const data = await submitReport({
-        args: [
-          address, // owner
-          form.title, // title
-          form.description, // description
-          form.target,
-          new Date(form.deadline).getTime(), // deadline,
-          form.image,
-        ],
+        args: [ipfsHash],
       });
 
-      console.log("contract call success", data);
+      console.log("Report submission success", data);
     } catch (error) {
-      console.log("contract call failure", error);
+      console.log("Report submission failure", error);
     }
   };
 
-  const getCampaigns = async () => {
-    const campaigns = await contract.call("getCampaigns");
-
-    const parsedCampaings = campaigns.map((campaign, i) => ({
-      owner: campaign.owner,
-      title: campaign.title,
-      description: campaign.description,
-      target: ethers.utils.formatEther(campaign.target.toString()),
-      deadline: campaign.deadline.toNumber(),
-      amountCollected: ethers.utils.formatEther(
-        campaign.amountCollected.toString()
-      ),
-      image: campaign.image,
-      pId: i,
-    }));
-
-    return parsedCampaings;
-  };
-
-  const getUserCampaigns = async () => {
-    const allCampaigns = await getCampaigns();
-
-    const filteredCampaigns = allCampaigns.filter(
-      (campaign) => campaign.owner === address
-    );
-
-    return filteredCampaigns;
-  };
-
-  const donate = async (pId, amount) => {
-    const data = await contract.call("donateToCampaign", [pId], {
-      value: ethers.utils.parseEther(amount),
-    });
-
-    return data;
-  };
-
-  const getDonations = async (pId) => {
-    const donations = await contract.call("getDonators", [pId]);
-    const numberOfDonations = donations[0].length;
-
-    const parsedDonations = [];
-
-    for (let i = 0; i < numberOfDonations; i++) {
-      parsedDonations.push({
-        donator: donations[0][i],
-        donation: ethers.utils.formatEther(donations[1][i].toString()),
+  const verifySubmittedReport = async (reportId) => {
+    try {
+      const data = await verifyReport({
+        args: [reportId],
       });
-    }
 
-    return parsedDonations;
+      console.log("Report verification success", data);
+    } catch (error) {
+      console.log("Report verification failure", error);
+    }
+  };
+
+  const getReportDetails = async (reportId) => {
+    try {
+      const reportDetails = await contract.call("getReport", [reportId]);
+      return {
+        reporter: reportDetails[0],
+        ipfsHash: reportDetails[1],
+        timestamp: reportDetails[2].toNumber(),
+        verified: reportDetails[3],
+      };
+    } catch (error) {
+      console.log("Error retrieving report details", error);
+      return null;
+    }
+  };
+
+  const getAllSubmittedReports = async () => {
+    try {
+      const allReports = await contract.call("getAllSubmittedReports");
+      return allReports;
+    } catch (error) {
+      console.log("Error retrieving submitted reports", error);
+      return [];
+    }
+  };
+
+  const getAllVerifiedReports = async () => {
+    try {
+      const verifiedReports = await contract.call("getAllVerifiedReports");
+      return verifiedReports;
+    } catch (error) {
+      console.log("Error retrieving verified reports", error);
+      return [];
+    }
   };
 
   return (
@@ -101,11 +91,11 @@ export const StateContextProvider = ({ children }) => {
         address,
         contract,
         connect,
-        submitReport: publishCampaign,
-        getCampaigns,
-        getUserCampaigns,
-        donate,
-        getDonations,
+        publishReport,
+        verifySubmittedReport,
+        getReportDetails,
+        getAllSubmittedReports,
+        getAllVerifiedReports,
       }}
     >
       {children}

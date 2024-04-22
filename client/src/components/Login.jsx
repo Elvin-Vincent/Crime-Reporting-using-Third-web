@@ -19,66 +19,66 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen">
+    <div className="bg-gradient-to-r from-gray-300 to-purple-500 min-h-screen">
       <Navbar />
-      <div className="flex items-center justify-center ">
-        <div className="sm:shadow-2xl sm:rounded-lg p-8 md:p-20 border-2 border-gray-100 bg-transparent backdrop-filter backdrop-blur-lg mt-20 sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
-          <h1 className="text-2xl font-bold  text-white text-center uppercase">
+      <div className="flex items-center justify-center">
+        <div className="sm:shadow-2xl sm:rounded-lg p-8 md:p-20 border-2  backdrop-filter backdrop-blur-lg mt-20 sm:w-full md:w-2/3 lg:w-1/2 xl:w-1/3">
+          <h1 className="text-3xl font-bold text-gray-800 text-center uppercase mb-8">
             Officer Login
           </h1>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="input-box relative mt-6 border-b border-white">
-              <label className="block text-sm font-medium mb-2 text-white uppercase">
+            <div className="input-box relative">
+              <label className="block text-sm font-medium mb-2 text-gray-800 uppercase">
                 Username
               </label>
               <input
                 type="text"
                 id="email"
-                placeholder="username"
-                className="w-full h-12 bg-transparent outline-none text-white text-lg pl-5"
+                placeholder="Username"
+                className="w-full h-12 bg-gray-100 rounded-md border border-gray-300 outline-none text-gray-800 text-lg pl-5 focus:ring-2 focus:ring-purple-500"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="input-box relative mt-6 border-b border-white">
+            <div className="input-box relative">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium mb-2 text-white uppercase"
+                className="block text-sm font-medium mb-2 text-gray-800 uppercase"
               >
                 Password
               </label>
               <input
                 type="password"
                 id="password"
-                placeholder="password"
-                className="w-full h-12 bg-transparent outline-none text-white text-lg pl-5"
+                placeholder="Password"
+                className="w-full h-12 bg-gray-100 rounded-md border border-gray-300 outline-none text-gray-800 text-lg pl-5 focus:ring-2 focus:ring-purple-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div className="remember-forgot mt-6">
-              <a href="#" className="text-white hover:underline">
+            <div className="remember-forgot flex justify-between items-center">
+              <a href="#" className="text-gray-600 hover:underline">
                 Forgot Password?
               </a>
-            </div>
-            <button
-              type="submit"
-              className="w-full h-12 bg-white text-black font-semibold rounded-full mt-6 text-lg"
-            >
-              Login
-            </button>
-            <div className="register-link mt-8">
-              <p className="text-white text-center">
-                Don't have an account?
-                <a
-                  href="#"
-                  className="text-white font-semibold hover:underline"
-                >
-                  Register
-                </a>
-              </p>
+              <button
+                type="submit"
+                className="w-32 h-12 bg-purple-500 text-white font-semibold rounded-md text-lg hover:bg-purple-600 transition duration-300"
+              >
+                Login
+              </button>
             </div>
           </form>
+          <div className="register-link mt-8 text-center">
+            <p className="text-gray-800">
+              Don't have an account?{" "}
+              <a
+                href="#"
+                className="text-purple-500 font-semibold hover:underline"
+              >
+                Register
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
