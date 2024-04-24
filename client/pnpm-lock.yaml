@@ -17,6 +17,9 @@ dependencies:
   '@fortawesome/react-fontawesome':
     specifier: ^0.2.0
     version: 0.2.0(@fortawesome/fontawesome-svg-core@6.5.1)(react@18.2.0)
+  '@thirdweb-dev/chains':
+    specifier: ^0.1.97
+    version: 0.1.97
   '@thirdweb-dev/react':
     specifier: ^4.4.0
     version: 4.4.0(@babel/core@7.23.7)(@ethersproject/abstract-provider@5.7.0)(@ethersproject/abstract-signer@5.7.0)(@ethersproject/bignumber@5.7.0)(@ethersproject/properties@5.7.0)(@thirdweb-dev/sdk@4.0.28)(ethers@5.7.2)(fastify@4.25.2)(localforage@1.10.0)(react-dom@18.2.0)(react-native@0.73.2)(react@18.2.0)(typescript@5.3.3)
@@ -4396,6 +4399,11 @@ packages:
 
   /@thirdweb-dev/chains@0.1.65:
     resolution: {integrity: sha512-csxBZnnjSEAISjlQrYJP/FV4buUlqHb7NF4vX/15hYc31J6Z4vJPRWcsd2WhzPj9YXR5sgSJcu6ro2C6s4jmOA==}
+    engines: {node: '>=18'}
+    dev: false
+
+  /@thirdweb-dev/chains@0.1.97:
+    resolution: {integrity: sha512-aDUEtkJu7ZsV2KKO9rECX1NAYOz4kpdk8LwEhbyqTEnHNw94YebUQBj4V08SzPJd3r9RoTu0C4TvNPRdZ1oDXQ==}
     engines: {node: '>=18'}
     dev: false
 
