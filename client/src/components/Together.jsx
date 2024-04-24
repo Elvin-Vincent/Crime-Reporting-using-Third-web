@@ -32,7 +32,7 @@ export const Together = () => {
       </div>
       <div className="md:w-1/2 md:ml-44">
         <h1
-          className="text-3xl font-bold mb-2 text-black mt-10 text-center md:text-left"
+          className="text-3xl font-bold mb-2 text-black mt-10 text-center md:text-left text-green-400"
           data-aos="zoom-in"
         >
           TOGETHER WE MAKE OUR WORLD SECURE

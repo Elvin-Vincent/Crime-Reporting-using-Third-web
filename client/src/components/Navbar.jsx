@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <div>
       <div className="flex justify-between items-center h-full py-5  relative z-50 ">
-        <h1 className="text-4xl max-xs:text-[25px] font-bold ml-6 text-red-600 cursor-pointer  tracking-wider transform hover:scale-95 hover:bg-opacity-50 transition ease-in duration-200">
+        <h1 className="text-4xl max-xs:text-[25px] font-bold ml-6 text-black cursor-pointer  tracking-wider transform hover:scale-95 hover:bg-opacity-50 transition ease-in duration-200">
           Safe Whistle
         </h1>
 
@@ -14,7 +14,7 @@ export default function Navbar() {
           <li className="group relative">
             <a
               href="/"
-              className="text-lg font-medium text-red-500 hover:text-green-500"
+              className="text-lg font-medium text-black hover:text-green-500"
             >
               home
               <div className="underline"></div>
@@ -23,7 +23,7 @@ export default function Navbar() {
           <li className="group relative">
             <a
               href="/services"
-              className="text-lg font-medium text-red-500 hover:text-green-500"
+              className="text-lg font-medium text-black hover:text-green-500"
             >
               services
               <div className="underline"></div>
@@ -32,7 +32,7 @@ export default function Navbar() {
           <li className="group relative">
             <a
               href="/login"
-              className="text-lg font-medium text-red-500 hover:text-green-500"
+              className="text-lg font-medium text-black hover:text-green-500"
             >
               login
               <div className="underline"></div>
@@ -41,7 +41,7 @@ export default function Navbar() {
           <li className="group relative">
             <a
               href="/aboutus"
-              className="text-lg font-medium text-red-500 hover:text-green-500"
+              className="text-lg font-medium text-black hover:text-green-500"
             >
               About Us
               <div className="underline"></div>
@@ -55,7 +55,7 @@ export default function Navbar() {
               smooth={true}
               offset={50}
               duration={500}
-              className="text-lg font-medium text-white hover:text-red-500 cursor-pointer"
+              className="text-lg font-medium text-white hover:text-black cursor-pointer"
             >
               About us
               <div className="underline"></div>
@@ -115,7 +115,7 @@ export default function Navbar() {
                   <li className="group relative">
                     <a
                       href="/"
-                      className="text-lg font-medium text-white hover:text-red-500"
+                      className="text-lg font-medium text-black hover:text-green-500"
                     >
                       home
                       <div className="underline"></div>
@@ -124,7 +124,7 @@ export default function Navbar() {
                   <li className="group relative">
                     <a
                       href="/services"
-                      className="text-lg font-medium text-white hover:text-red-500"
+                      className="text-lg font-medium text-black hover:text-green-500"
                     >
                       services
                       <div className="underline"></div>
@@ -133,7 +133,7 @@ export default function Navbar() {
                   <li className="group relative">
                     <a
                       href="/login"
-                      className="text-lg font-medium text-white hover:text-red-500"
+                      className="text-lg font-medium text-black hover:text-green-500"
                     >
                       login
                       <div className="underline"></div>
@@ -142,7 +142,7 @@ export default function Navbar() {
                   <li className="group relative">
                     <a
                       href="/aboutus"
-                      className="text-lg font-medium text-white hover:text-red-500"
+                      className="text-lg font-medium text-black hover:text-green-500"
                     >
                       About Us
                       <div className="underline"></div>

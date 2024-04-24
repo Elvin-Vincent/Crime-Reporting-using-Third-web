@@ -44,7 +44,7 @@ const Home = () => {
                   express and address those concerns.
                 </p>
                 <div className="mt-8">
-                  <ConnectWallet className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" />
+                  <ConnectWallet className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded" />
                 </div>
               </div>
               <div className="flex justify-center items-center">

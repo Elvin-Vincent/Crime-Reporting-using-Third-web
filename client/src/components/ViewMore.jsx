@@ -11,7 +11,7 @@ function ViewMore() {
     <div className="pt-10  " id="content2">
       <div className=" px-4">
         <div className="text-black font-bold mb-28 " data-aos="fade-down">
-          <h1 className="text-red-600 text-center text-5xl mt-10">
+          <h1 className="text-green-400 text-center text-5xl mt-10">
             Importance of Anonymous Crime Reporting Using Blockchain
           </h1>
           <p className="max-w-7xl mx-auto text-lg py-5 " data-aos="flip-up">
@@ -28,7 +28,7 @@ function ViewMore() {
                 className="w-8  mr-2 rounded-full"
               /> */}
               <div className="flex flex-col justify-between">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl font-bold mb-2 text-green-400">
                   Secure and Anonymous Reporting
                 </h2>
                 <p className="text-sm mt-auto">
@@ -48,7 +48,7 @@ function ViewMore() {
                 className="w-8  mr-2 rounded-full"
               /> */}
               <div className="flex flex-col justify-between">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl font-bold mb-2 text-green-400">
                   Immutable Blockchain Records
                 </h2>
                 <p className="text-sm">
@@ -68,7 +68,7 @@ function ViewMore() {
                 className="w-8  mr-2 rounded-full"
               /> */}
               <div className="flex flex-col justify-between">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl font-bold mb-2 text-green-400">
                   Decentralized Verification
                 </h2>
                 <p className="text-sm">
@@ -89,7 +89,7 @@ function ViewMore() {
                 className="w-8  mr-2 rounded-full"
               /> */}
               <div className="flex flex-col justify-between">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl font-bold mb-2 text-green-400">
                   Smart Contract Execution
                 </h2>
                 <p className="text-sm">
@@ -111,7 +111,7 @@ function ViewMore() {
                 className="w-8  mr-2 rounded-full"
               /> */}
               <div className="flex flex-col justify-between">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl font-bold mb-2 text-green-400">
                   User Privacy Protection
                 </h2>
                 <p className="text-sm">
@@ -131,7 +131,7 @@ function ViewMore() {
                 className="w-8  mr-2 rounded-full"
               /> */}
               <div className="flex flex-col justify-between">
-                <h2 className="text-2xl font-bold mb-2">
+                <h2 className="text-2xl font-bold mb-2 text-green-400">
                   Community Engagement Tools
                 </h2>
                 <p className="text-sm">
