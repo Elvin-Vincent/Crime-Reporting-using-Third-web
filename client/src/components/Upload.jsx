@@ -50,7 +50,7 @@ const UserMenu = () => {
   };
 
   return (
-    <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen text-gray-800 overflow-hidden">
+    <div className="bg-cover bg-gradient-to-br from-stone-300 from-10% via-zinc-400 via-30% to-zinc-900 to-90% min-h-screen text-gray-800">
       <div className="flex  lg:flex-row justify-between items-center ">
         <h1 className="text-4xl font-bold ml-6 text-zinc-800 py-3 uppercase  lg:mt-3">
           Safe Whistle

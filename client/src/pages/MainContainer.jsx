@@ -63,14 +63,14 @@ function MainContainer() {
             </div> */}
           </div>
 
-          <main>
+          {/* <main>
             <CardMain imgSrc={Card1} title={"Drug Trafficking"} hearts={"65"} />
             <CardMain imgSrc={Card2} title={"PUBLIC WASTE "} hearts={"65"} />
             <CardMain imgSrc={Card3} title={"CHILD LABOUR"} hearts={"65"} />
             <CardMain imgSrc={Card4} title={"Drug Trafficking"} hearts={"65"} />
             <CardMain imgSrc={Card5} title={"CHILD LABOUR"} hearts={"65"} />
             <CardMain imgSrc={Card6} title={"SAND MINING"} hearts={"65"} />
-          </main>
+          </main> */}
         </div>
       </div>
       <div className="right">
