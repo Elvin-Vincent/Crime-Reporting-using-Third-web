@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Menu.css";
 import logo from "../img/sw.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   faMessage,
   faRightFromBracket,
@@ -42,6 +43,8 @@ function getItem(label, key, icon, children, type) {
 const rootSubmenuKeys = ["sub1", "sub2", "sub4"];
 
 function SidebarMenu() {
+  const disconnect = useDisconnect();
+  const navigate = useNavigate();
   const [openKeys, setOpenKeys] = useState(["sub1"]);
 
   const onOpenChange = (keys) => {
@@ -95,8 +98,6 @@ function SidebarMenu() {
   //   </li>
   // );
 
-  const disconnect = useDisconnect();
-
   useEffect(() => {
     const mainMenuLi = document
       .getElementById("mainMenu")
@@ -109,7 +110,10 @@ function SidebarMenu() {
 
     mainMenuLi.forEach((n) => n.addEventListener("click", changeActive));
   }, []);
-
+  const handleLogout = () => {
+    navigate("/");
+    disconnect();
+  };
   return (
     <menu>
       <img src={logo} alt="" />
@@ -197,7 +201,7 @@ function SidebarMenu() {
           </div>
         </Drawer>
 
-        <button className=" flex justify-center" onClick={disconnect}>
+        <button className=" flex justify-center" onClick={handleLogout}>
           <Icon icon={<FaSignOutAlt />} />
         </button>
       </ul>
