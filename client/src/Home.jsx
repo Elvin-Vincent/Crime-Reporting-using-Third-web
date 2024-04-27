@@ -24,9 +24,9 @@ const Home = () => {
       ) : (
         <>
           <Navbar />
-          <main className="flex-grow mt-10  p-16 flex justify-center items-center">
+          <main className="flex-grow mt-10  flex justify-center items-center">
             <div className="grid grid-cols-1 md:grid-cols-2 ">
-              <div>
+              <div className="p-16">
                 <h2
                   style={{ lineHeight: "1.3" }}
                   className="font-bold text-5xl mb-10 text-gray-800 max-w-md"

@@ -169,10 +169,10 @@ function SidebarMenu() {
                       items={items1}
                     />
                   </li>
-                  <li className="mb-6 ml-5">
+                  {/* <li className="mb-6 ml-5">
                     <FontAwesomeIcon icon={faRightFromBracket} />
                     <span className="ml-5">Sign out</span>
-                  </li>
+                  </li> */}
                   <li className="mb-6">
                     <Menu onClick={onClick} mode="vertical" items={items} />
                   </li>
@@ -192,8 +192,13 @@ function SidebarMenu() {
                     <span className="ml-5">Help</span>
                   </li>
                   <li className="ml-5">
-                    <FontAwesomeIcon icon={faMessage} />
-                    <span className="ml-5">Send feedback</span>
+                    <button
+                      className=" flex justify-center"
+                      onClick={handleLogout}
+                    >
+                      <Icon icon={<FaSignOutAlt />} />
+                      <span className="ml-5">Logout</span>
+                    </button>
                   </li>
                 </ul>
               </div>

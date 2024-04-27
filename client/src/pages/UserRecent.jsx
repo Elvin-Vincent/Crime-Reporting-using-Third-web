@@ -1,19 +1,18 @@
+// Images.jsx
+
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const UserRecent = () => {
-  const location = useLocation();
-  const formData = location.state.formData;
+  const { hash } = useParams(); // Get the hash value from the URL
+
+  // Create the Cloudflare IPFS URL with the hash value
+  const imageUrl = `https://cloudflare-ipfs.com/ipfs/${hash}`;
 
   return (
-    <div>
-      <h1>Recently Submitted Details</h1>
-      <p>Reporter Name: {formData.reporterName}</p>
-      <p>Crime Title: {formData.crimeTitle}</p>
-      <p>Crime Description: {formData.crimeDescription}</p>
-      <p>Location: {formData.location}</p>
-      <p>Date: {formData.date}</p>
-      <img src={formData.evidenceImage} alt="Evidence" />
+    <div className="flex justify-center items-center h-screen">
+      {/* Render the image using the created URL */}
+      <img src={imageUrl} alt="Uploaded" className="max-w-full max-h-full" />
     </div>
   );
 };

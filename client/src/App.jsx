@@ -9,29 +9,30 @@ import Dashboard from "./components/Dashboard";
 import AboutUs from "./components/AboutUs";
 import Services from "./components/Services";
 import UserMenu from "./components/UserMenu";
-function App() {
-  return (
-    <ThirdwebProvider
-      activeChain="ethereum"
-      clientId="35f54b0dd60033ae3f80c93e76f45cd6"
-      // authConfig={{
-      //   authUrl: "/api/auth",
-      //   domain: "http://localhost:3000",
-      // }}
-    >
-      <div>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
+import { PolygonAmoyTestnet } from "@thirdweb-dev/chains";
+import { ethers } from "ethers";
 
-          <Route path="/dashboard/*" element={<Dashboard />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/Services" element={<Services />} />
-          <Route path="*" element={<Error />} />
-          <Route path="/userdashboard/*" element={<UserMenu />} />
-        </Routes>
-      </div>
-    </ThirdwebProvider>
+function App() {
+  // const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
+
+  return (
+    // authConfig={{
+    //   authUrl: "/api/auth",
+    //   domain: "http://localhost:3000",
+    // }}
+
+    <div>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/Services" element={<Services />} />
+        <Route path="*" element={<Error />} />
+        <Route path="/userdashboard/*" element={<UserMenu />} />
+      </Routes>
+    </div>
   );
 }
 

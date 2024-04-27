@@ -12,7 +12,7 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({ children }) => {
   const { contract } = useContract(
-    "0x3665655A0913FAED140471fa30D88A72AAA8BA56" // Replace with your contract address
+    "0x567Ba6974BF266515E26537A8b688afC67Af02a0" // Replace with your contract address
   );
   const { mutateAsync: submitReport } = useContractWrite(
     contract,

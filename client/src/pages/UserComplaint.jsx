@@ -15,13 +15,13 @@ import { checkIfImage } from "../utils";
 const UserComplaint = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const { UserComplaint } = useStateContext();
+  const { UserComplaint, publishReport } = useStateContext();
   const [form, setForm] = useState({
     title: "",
     description: "",
-
     deadline: "",
     image: "",
+    target: "", // Initialize target as an empty string
   });
 
   const [file, setFile] = useState(null);
@@ -47,6 +47,9 @@ const UserComplaint = () => {
         });
         const imageUrl = response.data.IpfsHash;
         console.log(imageUrl);
+        const publish = await publishReport(imageUrl);
+        console.log(publish, "publish");
+        setIsLoading(false);
         setForm({ ...form, image: imageUrl });
 
         alert("Successfully Image Uploaded");

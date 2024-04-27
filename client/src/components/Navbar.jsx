@@ -10,7 +10,7 @@ export default function Navbar() {
           Safe Whistle
         </h1>
 
-        <ul className="xs:flex hidden gap-x-10 mr-10 uppercase">
+        <ul className="xs:flex hidden gap-x-10 mr-10 uppercase font-bold">
           <li className="group relative">
             <a
               href="/"
