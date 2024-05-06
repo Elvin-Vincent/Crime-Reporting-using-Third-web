@@ -92,11 +92,6 @@ function SidebarMenu() {
       getItem("Account 3", "3"),
     ]),
   ];
-  // const Icon = ({ icon }) => (
-  //   <li>
-  //     <span>{icon}</span>
-  //   </li>
-  // );
 
   useEffect(() => {
     const mainMenuLi = document
@@ -110,10 +105,12 @@ function SidebarMenu() {
 
     mainMenuLi.forEach((n) => n.addEventListener("click", changeActive));
   }, []);
+
   const handleLogout = () => {
     navigate("/");
     disconnect();
   };
+
   return (
     <menu>
       <img src={logo} alt="" />
@@ -214,10 +211,6 @@ function SidebarMenu() {
   );
 }
 
-const Icon = ({ icon }) => (
-  <li>
-    <a href="#">{icon}</a>
-  </li>
-);
+const Icon = ({ icon }) => <li>{icon}</li>;
 
 export default SidebarMenu;

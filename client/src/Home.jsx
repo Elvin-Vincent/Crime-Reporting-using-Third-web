@@ -49,7 +49,7 @@ const Home = () => {
               </div>
               <div className="flex justify-center items-center">
                 <div className="">
-                  <img class="group" src="/images/group_x2.svg" />
+                  <img className="group" src="/images/group_x2.svg" />
                 </div>
               </div>
             </div>

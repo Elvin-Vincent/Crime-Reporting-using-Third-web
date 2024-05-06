@@ -1,19 +1,31 @@
-// Images.jsx
+import React, { useState, useEffect } from "react";
 
-import React from "react";
-import { useParams } from "react-router-dom";
+import DisplayCampaigns from "../components/DisplayCampaigns";
+import { useStateContext } from "../context";
 
 const UserRecent = () => {
-  const { hash } = useParams(); // Get the hash value from the URL
+  const [isLoading, setIsLoading] = useState(false);
+  const [campaigns, setCampaigns] = useState([]);
 
-  // Create the Cloudflare IPFS URL with the hash value
-  const imageUrl = `https://cloudflare-ipfs.com/ipfs/${hash}`;
+  const { address, contract, getAllSubmittedReports } = useStateContext();
+
+  const fetchCampaigns = async () => {
+    setIsLoading(true);
+    const data = await getAllSubmittedReports();
+    setCampaigns(data);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    if (contract) fetchCampaigns();
+  }, [address, contract]);
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      {/* Render the image using the created URL */}
-      <img src={imageUrl} alt="Uploaded" className="max-w-full max-h-full" />
-    </div>
+    <DisplayCampaigns
+      title="All Campaigns"
+      isLoading={isLoading}
+      campaigns={campaigns}
+    />
   );
 };
 

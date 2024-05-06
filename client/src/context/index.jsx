@@ -25,6 +25,7 @@ export const StateContextProvider = ({ children }) => {
 
   const address = useAddress();
   const connect = metamaskWallet();
+  const cloudflareIpfsGateway = "https://cloudflare-ipfs.com/ipfs/";
 
   const publishReport = async (ipfsHash) => {
     try {
@@ -68,7 +69,16 @@ export const StateContextProvider = ({ children }) => {
   const getAllSubmittedReports = async () => {
     try {
       const allReports = await contract.call("getAllSubmittedReports");
-      return allReports;
+
+      // Create a new array with imageUrl property added to each report
+      const reportsWithImageUrl = allReports.map((report) => {
+        const ipfsHash = report[1];
+        const imageUrl = cloudflareIpfsGateway + ipfsHash;
+        console.log(imageUrl); // Output each image URL separately
+        return { ...report, imageUrl }; // Create a new object with imageUrl property
+      });
+
+      return reportsWithImageUrl;
     } catch (error) {
       console.log("Error retrieving submitted reports", error);
       return [];

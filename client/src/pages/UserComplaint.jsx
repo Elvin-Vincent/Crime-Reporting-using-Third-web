@@ -26,7 +26,7 @@ const UserComplaint = () => {
 
   const [file, setFile] = useState(null);
   const [displayImg, setDisplayImg] = useState(null);
-  const [fileName, setFileName] = useState("Uploade Image");
+  const [fileName, setFileName] = useState("Upload Image");
 
   const uploadToPinata = async () => {
     setFileName("Image Uploading.....");
@@ -46,16 +46,18 @@ const UserComplaint = () => {
           },
         });
         const imageUrl = response.data.IpfsHash;
-        console.log(imageUrl);
         const publish = await publishReport(imageUrl);
-        console.log(publish, "publish");
         setIsLoading(false);
         setForm({ ...form, image: imageUrl });
 
         alert("Successfully Image Uploaded");
         setFileName("Uploaded...");
+
+        navigate(
+          `/userdashboard/userrecent/${imageUrl}?title=${form.title}&description=${form.description}&deadline=${form.deadline}`
+        );
       } catch (error) {
-        alert("Unable to uplade to the IPFS");
+        alert("Unable to upload to IPFS");
       }
     }
   };
@@ -82,16 +84,14 @@ const UserComplaint = () => {
     setIsLoading(true);
     const { title, description, deadline, image } = form;
 
-    console.log(title, description, deadline, image);
-
-    if (image || title || target || deadline || description || name) {
+    if (image || title || deadline || description) {
       await UserComplaint({
         ...form,
         target: ethers.utils.parseUnits(form.target, 18),
       });
       setIsLoading(false);
     } else {
-      console.log("provide the details");
+      console.log("Provide the details");
     }
   };
 
@@ -165,7 +165,7 @@ const UserComplaint = () => {
               />
             )}
             <button
-              onClick={uploadToPinata}
+              // onClick={uploadToPinata}
               className="w-full bg-blue-500 text-white py-2 rounded-b-lg hover:bg-blue-600"
             >
               {fileName}
@@ -181,25 +181,7 @@ const UserComplaint = () => {
           handleChange={(e) => handleFormFieldChange("description", e)}
         />
 
-        {/* <div className="w-full flex justify-start items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]">
-          <img
-            src={money}
-            alt="money"
-            className="w-[40px] h-[40px] object-contain"
-          />
-          <h4 className="font-epilogue font-bold text-[25px] text-white ml-[20px]">
-            You will get 100% of the raised amount
-          </h4>
-        </div> */}
-
         <div className="flex flex-wrap gap-[40px]">
-          {/* <FormField
-            labelName="Goal *"
-            placeholder="ETH 0.50"
-            inputType="text"
-            value={form.target}
-            handleChange={(e) => handleFormFieldChange("target", e)}
-          /> */}
           <FormField
             labelName="End Date *"
             placeholder="End Date"
@@ -212,7 +194,7 @@ const UserComplaint = () => {
         <div className="flex justify-center items-center mt-[40px]">
           <button
             type="button"
-            onClick={handleSubmit}
+            onClick={uploadToPinata}
             className="font-semibold border-none bg-[#4caf50] p-4 text-white rounded-md hover:bg-[#388e3c] transition-colors duration-300"
           >
             Submit

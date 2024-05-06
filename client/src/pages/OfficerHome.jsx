@@ -70,7 +70,7 @@ const OfficerHome = () => {
             <p>Your Balance :</p>{" "}
             <span className="text-black">
               {" "}
-              {balance ? balance.toString() : "Loading..."}$
+              {balance ? balance.toString() : "Loading..."}MATIC
             </span>
           </span>
         </li>
