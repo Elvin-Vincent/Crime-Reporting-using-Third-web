@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import DisplayCampaigns from "../components/DisplayCampaigns";
 import { useStateContext } from "../context";
+import UserDisplay from "../components/UserDisplay";
 
 const UserRecent = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +22,7 @@ const UserRecent = () => {
   }, [address, contract]);
 
   return (
-    <DisplayCampaigns
+    <UserDisplay
       title="All Campaigns"
       isLoading={isLoading}
       campaigns={campaigns}

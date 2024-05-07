@@ -1,8 +1,8 @@
-// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract DrugTraffickingReport {
     struct Report {
+        uint256 id; // Report ID
         address reporter; // Address of the reporter
         string ipfsHash; // IPFS hash of the report data (description, location, media)
         uint256 timestamp; // Timestamp when the report was created
@@ -11,26 +11,27 @@ contract DrugTraffickingReport {
 
     Report[] private reports;
 
-    address public authority; //Declares a public variable authority of type address, intended to represent the Ethereum address of the entity authorized to verify reports.
+    address public authority;
+    uint256 public reportIdCounter;
 
     event ReportSubmitted(
-        uint indexed reportId,
+        uint256 indexed reportId,
         address reporter,
         string ipfsHash,
         uint256 timestamp
     );
-    event ReportVerified(uint indexed reportId);
+    event ReportVerified(uint256 indexed reportId);
 
     constructor() {
-        // sets the authority to the address of the user deploying the contract (msg.sender).
-        authority = msg.sender; // Set the deploying address as the initial authority
+        authority = msg.sender;
+        reportIdCounter = 0;
     }
 
-    // Function to submit a report
     function submitReport(string memory _ipfsHash) public {
         uint256 currentTimestamp = block.timestamp;
         reports.push(
             Report({
+                id: reportIdCounter,
                 reporter: msg.sender,
                 ipfsHash: _ipfsHash,
                 timestamp: currentTimestamp,
@@ -39,18 +40,16 @@ contract DrugTraffickingReport {
         );
 
         emit ReportSubmitted(
-            reports.length - 1,
+            reportIdCounter,
             msg.sender,
             _ipfsHash,
             currentTimestamp
         );
 
-        // If the function reaches this point without reverting, submission was successful
-        // return true;
+        reportIdCounter++;
     }
 
-    // Function to verify a report
-    function verifyReport(uint _reportId) public {
+    function verifyReport(uint256 _reportId) public {
         require(
             msg.sender == authority,
             "Only the authority can verify reports."
@@ -65,13 +64,13 @@ contract DrugTraffickingReport {
         emit ReportVerified(_reportId);
     }
 
-    // Function to retrieve a report details using report id
     function getReport(
-        uint _reportId
-    ) public view returns (address, string memory, uint256, bool) {
+        uint256 _reportId
+    ) public view returns (uint256, address, string memory, uint256, bool) {
         require(_reportId < reports.length, "Invalid report ID.");
         Report storage report = reports[_reportId];
         return (
+            report.id,
             report.reporter,
             report.ipfsHash,
             report.timestamp,
@@ -79,12 +78,10 @@ contract DrugTraffickingReport {
         );
     }
 
-    // Function to view all submitted reports
     function getAllSubmittedReports() public view returns (Report[] memory) {
         return reports;
     }
 
-    // Function to view all verified reports
     function getAllVerifiedReports() public view returns (Report[] memory) {
         uint verifiedCount = 0;
         for (uint i = 0; i < reports.length; i++) {
@@ -104,6 +101,4 @@ contract DrugTraffickingReport {
 
         return verifiedReports;
     }
-
-    // Additional functions can be added for administrative purposes.
 }

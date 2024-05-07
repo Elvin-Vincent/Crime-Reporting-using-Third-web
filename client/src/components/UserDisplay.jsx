@@ -1,5 +1,3 @@
-// DisplayCampaigns.jsx
-
 import React, { useState, useEffect } from "react";
 import FundCard from "./FundCard"; // Assuming FundCard component is in a separate file
 import { loader } from "../assets"; // Import the loader image
@@ -9,6 +7,7 @@ import {
   useContractWrite,
   metamaskWallet,
 } from "@thirdweb-dev/react";
+import UserFundCard from "./UserFundCard";
 
 // Define the getAllSubmittedReports function
 const getAllSubmittedReports = async (contract, setisLoading) => {
@@ -35,8 +34,8 @@ const getAllSubmittedReports = async (contract, setisLoading) => {
   }
 };
 
-// Define the DisplayCampaigns
-const DisplayCampaigns = () => {
+// Define the UserDisplay
+const UserDisplay = () => {
   const [reports, setReports] = useState([]);
   const [isLoading, setisLoading] = useState(true); // State to track loading
 
@@ -47,12 +46,6 @@ const DisplayCampaigns = () => {
   useEffect(() => {
     async function fetchReports() {
       try {
-        if (!contract) {
-          // Contract is not yet initialized
-          console.log("Contract is not initialized");
-          return;
-        }
-
         const allReports = await getAllSubmittedReports(contract, setisLoading);
         setReports(allReports);
       } catch (error) {
@@ -79,11 +72,11 @@ const DisplayCampaigns = () => {
         {/* Display FundCards if reports are available */}
         {!isLoading &&
           reports.map((report, index) => (
-            <FundCard key={index} index={index} imageUrl={report.imageUrl} />
+            <UserFundCard key={index} imageUrl={report.imageUrl} />
           ))}
       </div>
     </div>
   );
 };
 
-export default DisplayCampaigns;
+export default UserDisplay;

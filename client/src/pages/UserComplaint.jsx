@@ -174,8 +174,8 @@ const UserComplaint = () => {
         </div>
 
         <FormField
-          labelName="Story *"
-          placeholder="Write your story"
+          labelName="Detailed Discription *"
+          placeholder="explain the crime details"
           isTextArea
           value={form.description}
           handleChange={(e) => handleFormFieldChange("description", e)}
@@ -183,8 +183,8 @@ const UserComplaint = () => {
 
         <div className="flex flex-wrap gap-[40px]">
           <FormField
-            labelName="End Date *"
-            placeholder="End Date"
+            labelName=" Date *"
+            placeholder=" Date"
             inputType="date"
             value={form.deadline}
             handleChange={(e) => handleFormFieldChange("deadline", e)}

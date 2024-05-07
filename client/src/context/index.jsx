@@ -1,3 +1,5 @@
+// context/index.jsx
+
 import React, { useContext, createContext } from "react";
 
 import {
@@ -88,6 +90,7 @@ export const StateContextProvider = ({ children }) => {
   const getAllVerifiedReports = async () => {
     try {
       const verifiedReports = await contract.call("getAllVerifiedReports");
+
       return verifiedReports;
     } catch (error) {
       console.log("Error retrieving verified reports", error);

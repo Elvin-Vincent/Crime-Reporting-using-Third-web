@@ -1,15 +1,16 @@
 .maincontainer {
-  width: 108%;
-  height: calc(
+  /* width: 108%; */
+  /* height: calc(
     100vh - 45px
-  ); /* Adjust height to occupy full viewport height minus 45px */
-  display: flex;
+  ); Adjust height to occupy full viewport height minus 45px */
+  /* display: flex; */
   padding-top: 15px;
+  margin-top: 50px;
   overflow-y: auto; /* Use auto to show scrollbar only when needed */
 }
 
 .maincontainer .left {
-  width: calc(100% - 30%);
+  /* width: calc(100% - 30%); */
   overflow-y: auto; /* Add overflow-y: auto to enable scrolling for the left section */
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -78,13 +79,15 @@
 .maincontainer .left .cards .filters {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5px 30px;
 }
 
 .maincontainer .left .cards .filters .popular {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 20px;
 }
 
 .maincontainer .left .cards .filters .popular h2 {
