@@ -125,9 +125,9 @@ function SidebarMenu() {
         >
           <Icon icon={<FaFileUpload />} />
         </Link>
-        <Link to="/userdashboard/userwallet" className="flex items-center mb-4">
+        {/* <Link to="/userdashboard/userwallet" className="flex items-center mb-4">
           <Icon icon={<FaWallet />} />
-        </Link>
+        </Link> */}
         <Link
           to="/userdashboard/useranalytics"
           className="flex items-center mb-4"

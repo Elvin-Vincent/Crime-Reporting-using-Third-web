@@ -12,7 +12,7 @@ const UserPages = () => {
       <Routes>
         <Route path="/" element={<MainContainer />} />
         <Route path="/usercomplaints" element={<UserComplaint />} />
-        <Route path="/UserWallet" element={<UserWallet />} />
+        {/* <Route path="/UserWallet" element={<UserWallet />} /> */}
         <Route path="/useranalytics" element={<UserAnalytics />} />
         <Route path="/userrecent" element={<UserRecent />} />
 

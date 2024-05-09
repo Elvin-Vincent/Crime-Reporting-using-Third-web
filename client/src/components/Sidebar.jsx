@@ -141,12 +141,12 @@ const Sidebar = ({ isSidebarHidden }) => {
           </Link>
         </li>
         <li>
-          <Link to="/dashboard/message" onClick={handleSideMenuClick}>
+          {/* <Link to="/dashboard/message" onClick={handleSideMenuClick}>
             <i className="bx bxs-message-dots">
               <FontAwesomeIcon icon={faMessage} />
             </i>
             <span className="text">Message</span>
-          </Link>
+          </Link> */}
         </li>
       </ul>
       <ul className="side-menu">

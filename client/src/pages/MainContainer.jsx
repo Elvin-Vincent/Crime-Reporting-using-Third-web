@@ -1,67 +1,70 @@
 import React from "react";
 import "./MainContainer.css";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ViewMore from "../components/ViewMore";
 
 import { Link } from "react-router-dom";
 
 function MainContainer() {
   return (
-    <div className="maincontainer">
-      <div className="left">
-        <div
-          className="banner bg-cover bg-center relative"
-          // style={{ backgroundImage: `url(${Banner})` }}
-        >
-          <div className="absolute inset-0 opacity-50"></div>
-          <div className="absolute inset-0 flex flex-col justify-center items-center te">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
-              Welcome to <span className="text-red-600">Safe Whistle</span>
-            </h1>
-            <h2 className="text-lg md:text-xl text-gray-300 mb-6 text-center">
-              Your trusted destination for reporting and resolving issues
-            </h2>
-            <div className="flex justify-center">
-              <Link to="/userdashboard/usercomplaints" className="button te">
-                New Complaint
-              </Link>
+    <div>
+      <div className="maincontainer">
+        <div className="left">
+          <div
+            className="banner bg-cover bg-center relative"
+            // style={{ backgroundImage: `url(${Banner})` }}
+          >
+            <div className="absolute inset-0 opacity-50"></div>
+            <div className="absolute inset-0 flex flex-col justify-center items-center te">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
+                Welcome to <span className="text-red-600">Safe Whistle</span>
+              </h1>
+              <h2 className="text-lg md:text-xl text-gray-300 mb-6 text-center">
+                Your trusted destination for reporting and resolving issues
+              </h2>
+              <div className="flex justify-center">
+                <Link to="/userdashboard/usercomplaints" className="button te">
+                  New Complaint
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* <main>
-          <div className="text-gray-300 font-bold mb-28 " data-aos="fade-down">
-            <h1 className="text-white text-center text-5xl mt-10">
-              Filing a Complaint on Safe Whistle Crime Reporting Portal
-            </h1>
-            <p class="text-lg leading-relaxed my-4">
-              <span class="font-bold text-blue-800">Safe Whistle</span> is an
-              innovative platform leveraging blockchain technology to enable
-              secure and anonymous reporting of various crimes online. Developed
-              with the mission of empowering individuals to report incidents
-              without fear of retribution, Safe Whistle provides a user-friendly
-              interface for victims/complainants to lodge their complaints.
-            </p>
-            <p class="text-lg leading-relaxed my-4">
-              Our platform prioritizes{" "}
-              <span class="font-bold text-green-600">cyber crimes</span>,
-              particularly those targeting women and children, ensuring swift
-              and appropriate action by law enforcement agencies. It's crucial
-              to furnish accurate details while filing a complaint to expedite
-              the resolution process.
-            </p>
-            <p class="text-lg leading-relaxed my-4">
-              For emergencies or non-cyber crimes, please contact your local
-              police department. National helpline numbers include{" "}
-              <span class="font-bold text-red-600">112</span> for police
-              assistance, <span class="font-bold text-red-600">181</span> for
-              women's aid, and <span class="font-bold text-red-600">1930</span>{" "}
-              for the Cyber Crime Helpline.
-            </p>
-          </div>
+          <main>
+            <div
+              className="text-gray-300 font-bold mb-28 "
+              data-aos="fade-down"
+            >
+              <h1 className="text-white text-center text-5xl mt-10 mb-10">
+                Filing a Complaint on Safe Whistle Crime Reporting Portal
+              </h1>
+              <p class="text-lg leading-relaxed my-4">
+                <span class="font-bold text-blue-800">Safe Whistle</span> is an
+                innovative platform leveraging blockchain technology to enable
+                secure and anonymous reporting of various crimes online.
+                Developed with the mission of empowering individuals to report
+                incidents without fear of retribution, Safe Whistle provides a
+                user-friendly interface for victims/complainants to lodge their
+                complaints.
+              </p>
+              <p class="text-lg leading-relaxed my-4">
+                Our platform prioritizes{" "}
+                <span class="font-bold text-green-600">cyber crimes</span>,
+                particularly those targeting women and children, ensuring swift
+                and appropriate action by law enforcement agencies. It's crucial
+                to furnish accurate details while filing a complaint to expedite
+                the resolution process.
+              </p>
+              <p class="text-lg leading-relaxed my-4">
+                For emergencies or non-cyber crimes, please contact your local
+                police department. National helpline numbers include{" "}
+                <span class="font-bold text-red-600">112</span> for police
+                assistance, <span class="font-bold text-red-600">181</span> for
+                women's aid, and{" "}
+                <span class="font-bold text-red-600">1930</span> for the Cyber
+                Crime Helpline.
+              </p>
+            </div>
 
-          <body className="bg-transparent">
+            {/* <body className="bg-transparent">
             <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
               <div className="flex justify-center items-center flex-col">
                 <h2 className="text-2xl font-bold text-center mb-6">
@@ -99,8 +102,9 @@ function MainContainer() {
                 </div>
               </div>
             </div>
-          </body>
-        </main> */}
+          </body> */}
+          </main>
+        </div>
       </div>
     </div>
   );
